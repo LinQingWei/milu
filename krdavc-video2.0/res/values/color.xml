@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<resources>  
+    <!-- 设置透明度为56%(9/16)左右 -->  
+    <color name="transparent">#0000</color>       
+</resources> 

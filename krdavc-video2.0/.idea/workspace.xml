@@ -1,0 +1,1284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidConfiguredLogFilters">
+    <filters>
+      <filter>
+        <option name="logLevel" value="verbose" />
+        <option name="logMessagePattern" value="" />
+        <option name="logTagPattern" value="RecordActivity" />
+        <option name="name" value="RecordActivity" />
+        <option name="pid" value="" />
+      </filter>
+    </filters>
+  </component>
+  <component name="AndroidDesignerProfile">
+    <option name="fullProfile">
+      <profile>
+        <option name="device" value="2.7in QVGA" />
+        <option name="deviceConfiguration" value="Portrait" />
+        <option name="targetHashString" value="android-10" />
+        <option name="theme" value="Theme.Black.NoTitleBar.Fullscreen" />
+      </profile>
+    </option>
+    <option name="selection" value="[Full]" />
+  </component>
+  <component name="AndroidLayoutPreviewToolWindow">
+    <option name="state">
+      <GlobalState>
+        <option name="device" value="2.7in QVGA" />
+        <option name="dockMode" value="" />
+        <option name="nightMode" value="notnight" />
+        <option name="targetHashString" value="android-10" />
+        <option name="theme" value="Theme.Black.NoTitleBar.Fullscreen" />
+        <option name="visible" value="false" />
+      </GlobalState>
+    </option>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="VideoRecordActivity" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="DEBUG" />
+  </component>
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="krdavc-video2.0" />
+    </artifacts-to-build>
+  </component>
+  <component name="BuildServerSettings">
+    <option name="LOGIN" value="yuanyou" />
+    <option name="SERVER_URL" value="http://192.168.1.10:8080/TeamCity" />
+    <option name="PASSWORD" value="dfdedf9adf9adfcedf9adf9a" />
+    <option name="REMEMBER_ME" value="true" />
+    <option name="USE_IDEA_PROXY_SETTINGS" value="false" />
+    <option name="TEST_STATUS_BUILD_TYPE_IDS" />
+    <option name="INSPECTIONS_BUILD_TYPE_IDS" />
+    <option name="DUPLICATES_BUILD_TYPE_IDS" />
+    <option name="COVERAGE_SETTINGS" />
+    <option name="ARTIFACTS_BUILD_TYPE_IDS" />
+    <option name="PERFORM_COMMIT_IF_SUCCESSFUL" value="true" />
+    <option name="PERFORM_COMMIT_IF_NO_NEW_FAILED_TESTS" value="false" />
+    <option name="REQUEST_CONFIRMATON" value="false" />
+    <option name="PRE_TESTED_COMMIT" value="true" />
+    <option name="PROJECT_STATUS_DIALOG_SPLITTER_DIVIDER_LOCATION" value="500" />
+    <option name="CHANGES_STATUS_DIALOG_SPLITTER_DIVIDER_LOCATION" value="500" />
+    <option name="FILTER_BY_STATUS" value="false" />
+    <option name="FILTER_MARKED_AS_FIXED" value="false" />
+    <option name="SHOW_CLOSE_PROMPT" value="true" />
+    <option name="TOOL_WINDOW_SELECTED_CONTENT_INDEX" value="0" />
+    <option name="FILTER_BY_CURRENT_PROJECT" value="true" />
+    <treeState key="project">
+      <selectedPath>
+        <pathElement>
+          <option name="myNodeId" value="helperText" />
+          <option name="myNodeType" value="jetbrains.buildServer.tree.descriptors.LinkedTextDescriptor" />
+        </pathElement>
+      </selectedPath>
+    </treeState>
+    <treeState key="responsibilities">
+      <selectedPath>
+        <pathElement>
+          <option name="myNodeId" value="helperText" />
+          <option name="myNodeType" value="jetbrains.buildServer.tree.descriptors.LinkedTextDescriptor" />
+        </pathElement>
+      </selectedPath>
+    </treeState>
+    <treeState key="changes">
+      <selectedPath>
+        <pathElement>
+          <option name="myNodeId" value="helperText" />
+          <option name="myNodeType" value="jetbrains.buildServer.tree.descriptors.LinkedTextDescriptor" />
+        </pathElement>
+      </selectedPath>
+    </treeState>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" readonly="true" id="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/krdavc/video/recorder/utils/SDUtils.java" afterPath="$PROJECT_DIR$/src/com/krdavc/video/recorder/utils/SDUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/krdavc/video/recorder/utils/UtilMethod.java" afterPath="$PROJECT_DIR$/src/com/krdavc/video/recorder/utils/UtilMethod.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/krdavc/video/recorder/VideoRecordActivity.java" afterPath="$PROJECT_DIR$/src/com/krdavc/video/recorder/VideoRecordActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/krdavc-video2.0.iml" afterPath="$PROJECT_DIR$/krdavc-video2.0.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/krdavc_video2_0.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/krdavc_video2_0.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/videomain.xml" afterPath="$PROJECT_DIR$/res/layout/videomain.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
+    <ignored path="krdavc-video2.0.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy7674068230738832048tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1352958327250" ignored="false" />
+    <file path="D:/develop/idea12/IntelliJIdea12/config/options/options.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1352717287401" ignored="false" />
+    <file path="D:/develop/idea12/IntelliJIdea12/config/options/runner.layout.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1352717186647" ignored="false" />
+    <file path="$PROJECT_DIR$/../三星手机版本/videorecorder/src/com/smilemp/videoRecorder/RecordActivity.java" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1352715150190" ignored="false" />
+    <file path="D:/develop/idea12/IntelliJIdea12/config/options/notifications.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1356583262751" ignored="false" />
+    <file path="/fragment.java" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1363170293898" ignored="false" />
+    <file path="/videomain.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1355448902484" ignored="false" />
+    <file path="/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1352709665635" ignored="false" />
+    <file path="/SDUtils.java" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1352706735663" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy62081182300293308tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1352371670590" ignored="false" />
+    <file path="$PROJECT_DIR$/../三星手机版本/videorecorder/.idea/workspace.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1352370958519" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy7895091602483369743tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350877882032" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy1268936006967455436tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350449331978" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy1399070015226351098tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350386847689" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy2178626780791007013tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350386516965" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy7760265704556586079tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350386192648" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy5707173985548805281tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350386099717" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy3702760085593932393tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350386064524" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy7554143359847784994tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350385928849" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy6302767580644717666tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350369816135" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy4831892923093800454tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350370104250" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy7482370672667288008tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350370138808" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy8111663367911237934tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350370850204" ignored="false" />
+    <file path="/Dummy.txt" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1355119986895" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy2397768024991818800tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350374080052" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy1801267171003274610tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350374539345" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy7676420522034202166tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350374585393" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy5064347137964215876tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350374668134" ignored="false" />
+    <file path="/main.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350375300772" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy5077416839461864172tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350375327977" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy8295743617187411889tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350378454684" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy8911493852443429181tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350378573747" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy4943214259065972477tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350393376260" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy5872522706333112623tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350393418886" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy4917635345776037542tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350394048340" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy8998305493893749397tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350394448091" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy1204987778773027142tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350394606189" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy5120255681650084383tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350396586579" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy6611370161346769776tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350396619998" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy4120023752982664671tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350396653185" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy7196143525384901936tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350396778057" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy7421760220132474689tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350397077067" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy8591135340392874675tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350397896074" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy3499078114397521747tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350397979487" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy3834768640408390393tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350398791023" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy7737410264212762575tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350402619717" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy6855524127885150025tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350403328132" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy5488400180942528709tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350406129743" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy6596080165663986664tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350406208602" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy8677075229265508418tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350406288183" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy7884704463105179753tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350609439508" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy3885774591666752326tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350609560642" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy4457522619102916134tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350609600207" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy3448191601669140020tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350609645822" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy7525402537725903834tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350609666957" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy5001045059637668128tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350609682497" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy3738006779673186740tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350609706135" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy6209996277169183450tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350610331147" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy5769782237702317885tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350610439692" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy90796585526757808tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350611042812" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy3031802284566079672tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350611083850" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy5347327297465711031tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350611962011" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy8924205787402662657tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350611985201" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy6689030000846619280tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350612152154" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy8723094669508461979tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350612165155" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy4084804173801059850tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350612231912" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy7161007151157527459tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350612352177" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy5825002624199305668tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350612453494" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy908249043489004384tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350612824573" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/android_manifest_copy2013049659012272871tmp/AndroidManifest.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1350613214946" ignored="false" />
+    <file path="D:/develop/idea12/IntelliJIdea12/config/options/feature.usage.statistics.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1352443709060" ignored="false" />
+    <file path="/UtilMethod.java" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1354155943825" ignored="false" />
+    <file path="/RecordActivity.java" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1352956507958" ignored="false" />
+    <file path="/VideoRecordActivity.java" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1363170989632" ignored="false" />
+    <file path="/VideoService.java" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1355110992917" ignored="false" />
+    <file path="/VideoRecordService.java" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1355116928769" ignored="false" />
+    <file path="D:/develop/idea12/IntelliJIdea12/config/options/window.manager.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1355306197629" ignored="false" />
+    <file path="/AndroidUtil.java" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1356583335592" ignored="false" />
+    <file path="$PROJECT_DIR$/../../../module/makeapp-android/src/main/java/com/makeapp/android/util/AndroidUtil.java" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1356583911164" ignored="false" />
+    <file path="/a.dummy" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1363170661374" ignored="false" />
+    <file path="$PROJECT_DIR$/../../conversant/sources/storeshare/src/com/conversant/storeshare/util/SdCardUtil.java" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1356583262449" ignored="false" />
+    <file path="/SdCardUtil.java" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1356583259157" ignored="false" />
+    <file path="$PROJECT_DIR$/../../../module/makeapp-android/src/main/java/com/makeapp/android/jpa/AndroidQuery.java" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1356583295108" ignored="false" />
+    <file path="$PROJECT_DIR$/../../../module/makeapp-android/pom.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1356583697663" ignored="false" />
+    <file path="/pom.xml" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1356583693422" ignored="false" />
+    <file path="$MAVEN_REPOSITORY$/com/makeapp/makeapp-android/3.0-SNAPSHOT/makeapp-android-3.0-SNAPSHOT-sources.jar!/com/makeapp/android/util/AndroidUtil.java" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1356583937810" ignored="false" />
+    <file path="$PROJECT_DIR$/../../conversant/sources/SingTel.StoreShare-Android/src/com/conversant/storeshare/contactbackup/service/ContactOperation.java" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1363161578183" ignored="false" />
+    <file path="/ContactOperation.java" changelist="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" time="1363161545750" ignored="false" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CodeExplorer">
+    <option name="filters">
+      <list>
+        <LibraryFilter />
+      </list>
+    </option>
+    <option name="showMethodBody" value="true" />
+  </component>
+  <component name="Compare Directories">
+    <option name="identicalVisible" value="true" />
+    <option name="differentVisible" value="true" />
+    <option name="differentInBlanksVisible" value="true" />
+    <option name="differentNonSignificantVisible" value="true" />
+    <option name="leftOnlyVisible" value="true" />
+    <option name="rightOnlyVisible" value="true" />
+    <option name="mostProbablyIdenticalVisible" value="true" />
+    <option name="probablyIdenticalLeftNewerVisible" value="true" />
+    <option name="probablyIdenticalRightNewerVisible" value="true" />
+    <option name="probablyDifferentLeftNewerVisible" value="true" />
+    <option name="probablyDifferentRightNewerVisible" value="true" />
+    <option name="javaStructureVisible" value="false" />
+    <option name="autoExcludeHidden" value="false" />
+    <option name="autoScrollFromSource" value="false" />
+    <option name="lastLeftPaths">
+      <value len="0" />
+    </option>
+    <option name="lastRightPaths">
+      <value len="0" />
+    </option>
+    <option name="ignoredFileMasks">
+      <value len="0" />
+    </option>
+    <option name="exportFileName" value="CompareDirectories.txt" />
+    <option name="allowedDiffMasks">
+      <value len="0" />
+    </option>
+    <option name="diffsInCommentsNonSignificant" value="false" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="DebuggerManager">
+    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </breakpoint_any>
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint url="jar://D:/develop/android-sdk-windows/platforms/android-10/android-src.zip!/android/media/MediaRecorder.java" line="275" class="android.media.MediaRecorder" package="android.media">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/krdavc/video/recorder/VideoRecordActivity.java" line="381" class="com.krdavc.video.recorder.VideoRecordActivity" package="com.krdavc.video.recorder">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/krdavc/video/recorder/VideoRecordActivity.java" line="262" class="com.krdavc.video.recorder.VideoRecordActivity" package="com.krdavc.video.recorder">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/krdavc/video/recorder/VideoRecordActivity.java" line="395" class="com.krdavc.video.recorder.VideoRecordActivity" package="com.krdavc.video.recorder">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/krdavc/video/recorder/VideoRecordService.java" line="240" class="com.krdavc.video.recorder.VideoRecordService" package="com.krdavc.video.recorder">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/krdavc/video/recorder/VideoRecordActivity.java" line="218" class="com.krdavc.video.recorder.VideoRecordActivity" package="com.krdavc.video.recorder">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/krdavc/video/recorder/VideoRecordService.java" line="79" class="com.krdavc.video.recorder.VideoRecordService" package="com.krdavc.video.recorder">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/krdavc/video/recorder/VideoRecordActivity.java" line="201" class="com.krdavc.video.recorder.VideoRecordActivity" package="com.krdavc.video.recorder">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/krdavc/video/recorder/VideoRecordService.java" line="106" class="com.krdavc.video.recorder.VideoRecordService" package="com.krdavc.video.recorder">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/krdavc/video/recorder/VideoRecordActivity.java" line="171" class="com.krdavc.video.recorder.VideoRecordActivity" package="com.krdavc.video.recorder">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/krdavc/video/recorder/VideoRecordActivity.java" line="409" class="com.krdavc.video.recorder.VideoRecordActivity" package="com.krdavc.video.recorder">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <breakpoint_rules />
+    <ui_properties />
+  </component>
+  <component name="ErrorTreeViewConfiguration">
+    <option name="hideWarnings" value="true" />
+    <option name="HIDE_WARNINGS" value="true" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="krdavc-video2.0" />
+    <favorites_list name="Current task" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="VideoRecordActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/krdavc/video/recorder/VideoRecordActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="631" column="50" selection-start="20263" selection-end="20263" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#17150#17383#0" expanded="true" />
+                <element signature="e#17360#17361#0" expanded="true" />
+                <element signature="e#27435#27640#0" expanded="true" />
+                <element signature="e#27629#27630#0" expanded="true" />
+                <element signature="class#RepeatTimerTask#0;class#VideoRecordActivity#0" expanded="true" />
+                <element signature="class#AvailableStoreTimerTask#0;class#VideoRecordActivity#0" expanded="true" />
+                <element signature="class#BatteryReceiver#0;class#VideoRecordActivity#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MediaRecorder.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://D:/develop/android-sdk-windows/platforms/android-10/android-src.zip!/android/media/MediaRecorder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="274" column="16" selection-start="9884" selection-end="9884" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CamcorderProfile.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://D:/develop/android-sdk-windows/platforms/android-10/android-src.zip!/android/media/CamcorderProfile.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="147" column="35" selection-start="4575" selection-end="4575" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CameraProfile.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://D:/develop/android-sdk-windows/platforms/android-10/android-src.zip!/android/media/CameraProfile.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="30" column="13" selection-start="991" selection-end="991" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="videomain.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/videomain.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="36" column="10" selection-start="1247" selection-end="1247" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VideoRecordService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/krdavc/video/recorder/VideoRecordService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="211" column="63" selection-start="6606" selection-end="6606" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="44" selection-start="1690" selection-end="1690" vertical-scroll-proportion="0.74319726">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SDUtils.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/krdavc/video/recorder/utils/SDUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="130" column="25" selection-start="2912" selection-end="2912" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UtilMethod.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/krdavc/video/recorder/utils/UtilMethod.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="200" column="32" selection-start="5570" selection-end="5570" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#2826#3073#0" expanded="true" />
+                <element signature="e#3062#3063#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AudioRecord.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://D:/develop/android-sdk-windows/platforms/android-10/android-src.zip!/android/media/AudioRecord.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="515" column="0" selection-start="18726" selection-end="18726" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
+  </component>
+  <component name="GenerateSignedApkSettings">
+    <option name="KEY_STORE_PATH" value="D:\develop\android-sdk-windows\keystore\makeapp-release.keystore" />
+    <option name="KEY_ALIAS" value="makeapp-release" />
+    <option name="REMEMBER_PASSWORDS" value="true" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/src/com/krdavc/video/recorder/MyService.java" />
+        <option value="$PROJECT_DIR$/res/layout/main.xml" />
+        <option value="$PROJECT_DIR$/src/com/krdavc/video/recorder/VideoApplication.java" />
+        <option value="$PROJECT_DIR$/src/com/krdavc/video/recorder/VideoStore.java" />
+        <option value="$PROJECT_DIR$/src/com/krdavc/video/recorder/VideoCrashHandler.java" />
+        <option value="$PROJECT_DIR$/src/com/krdavc/video/recorder/utils/MD5.java" />
+        <option value="$PROJECT_DIR$/src/com/krdavc/video/recorder/RecordActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/krdavc/video/recorder/receiver/BootReceiver.java" />
+        <option value="$PROJECT_DIR$/src/com/krdavc/video/recorder/ServiceForRecord.java" />
+        <option value="$PROJECT_DIR$/src/com/krdavc/video/recorder/VideoService.java" />
+        <option value="$PROJECT_DIR$/src/com/krdavc/video/recorder/VideoRecordService.java" />
+        <option value="$PROJECT_DIR$/src/com/krdavc/video/recorder/utils/SDUtils.java" />
+        <option value="$PROJECT_DIR$/res/layout/videomain.xml" />
+        <option value="$PROJECT_DIR$/src/com/krdavc/video/recorder/utils/UtilMethod.java" />
+        <option value="$PROJECT_DIR$/src/com/krdavc/video/recorder/VideoRecordActivity.java" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1292" />
+    <option name="height" value="776" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="krdavc-video2.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="krdavc-video2.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="krdavc-video2.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="SHOW_ALL_PROCESSES" value="false" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="OverrideImplement.combined" value="false" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="recentsLimit" value="5" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="ExportedApkPath" value="D:\work\source\makeapp\project\krdavc\krdavc-video2.0\release\krdavc-video2.0.16.apk" />
+    <property name="ExportedModule" value="krdavc-video2.0" />
+    <property name="last_opened_file_path" value="D:/develop/android-sdk-windows/keystore/makeapp-debug.keystore" />
+    <property name="DEBUGGABLE_DEVICE" value="4df1129c27269f4d" />
+    <property name="DEBUGGABLE_PROCESS" value="com.krdavc.video.recorder" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="AndroidTargetDevices" value="4df16a7019d66f0d" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="options.lastSelected" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="AndroidLayoutSelectedEditor" value="text-editor" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="AndroidRunProguardForReleaseBuild" value="false" />
+    <property name="restartRequiresConfirmation" value="true" />
+    <property name="options.searchVisible" value="true" />
+  </component>
+  <component name="PublishConfig">
+    <servers>
+      <server id="4b4f1e77-9a69-4612-b415-30c84c4cf051">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </server>
+      <server id="e28216be-441d-490e-9014-1b4bc6925493">
+        <serverdata />
+      </server>
+    </servers>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.krdavc.video.recorder" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\work\source\makeapp\project\krdavc\krdavc-video2.0\src\com\krdavc\video\recorder" />
+      <recent name="D:\work\source\makeapp\project\krdavc\krdavc-video2.0\res\drawable-hdpi" />
+      <recent name="D:\work\source\makeapp\project\krdavc\krdavc-video2.0\res\layout" />
+      <recent name="D:\work\source\makeapp\project\krdavc\krdavc-video2.0" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Android Application.krdavc-video2.0">
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
+      <option name="PROGRAM_PARAMETERS" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="GLUE" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="krdavc-video2.0" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="krdavc-video2.0" />
+      <option name="ACTIVITY_CLASS" value="com.krdavc.video.recorder.RecordActivity" />
+      <option name="MODE" value="default_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="USB_DEVICE" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <RunnerSettings RunnerId="AndroidDebugRunner" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="AndroidDebugRunner" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Android Application.krdavc-video2.0" />
+    </list>
+    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
+      <Host>localhost</Host>
+      <Port>5050</Port>
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="true" SSL_PROTOCOLS="all">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <configuration useDefault="true">C:\Users\yuanyou\AppData\Roaming\Subversion</configuration>
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="SvnFileUrlMappingImpl">
+    <option name="myMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\work\source\makeapp\project\krdavc\krdavc-video2.0" />
+          <option name="myCopyRoot" value="D:\work\source\makeapp\project\krdavc\krdavc-video2.0" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\work\source\makeapp\project\krdavc\krdavc-video2.0\.idea" />
+          <option name="myCopyRoot" value="D:\work\source\makeapp\project\krdavc\krdavc-video2.0\.idea" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+    <option name="myMoreRealMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\work\source\makeapp\project\krdavc\krdavc-video2.0" />
+          <option name="myCopyRoot" value="D:\work\source\makeapp\project\krdavc\krdavc-video2.0" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cf6cec5b-9c7d-4f01-8011-7fb7f9a56257" name="Default" comment="" />
+      <created>1350369596051</created>
+      <updated>1350369596051</updated>
+      <workItem from="1363156585392" duration="11906000" />
+    </task>
+    <task id="LOCAL-00001">
+      <created>1355117514102</created>
+      <updated>1355117514102</updated>
+    </task>
+    <task id="LOCAL-00002" summary="2.0.10">
+      <created>1355119992100</created>
+      <updated>1355119992100</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="11906000" />
+  </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1292" height="776" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TunnelliJ" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32496077" sideWeight="0.49676377" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Compare Directories" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43171114" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TeamCity" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3432602" sideWeight="0.4975728" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23739837" sideWeight="0.30141288" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32496077" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="RESTClient" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47409734" sideWeight="0.552589" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286385" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27398375" sideWeight="0.67503923" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23861852" sideWeight="0.49676377" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.7601881" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Code explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291536" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.7601881" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928804" sideWeight="0.6708464" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Kotlin" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="JSON Formatter" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="CHECK_NEW_TODO" value="true" />
+    <option name="myTodoPanelSettings">
+      <value>
+        <are-packages-shown value="false" />
+        <are-modules-shown value="false" />
+        <flatten-packages value="false" />
+        <is-autoscroll-to-source value="false" />
+      </value>
+    </option>
+    <option name="PERFORM_UPDATE_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_COMMIT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_CHECKOUT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="false" />
+    <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="false" />
+    <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
+    <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
+    <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
+    <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
+    <option name="SHORT_DIFF_HORIZONTALLY" value="true" />
+    <option name="SHORT_DIFF_EXTRA_LINES" value="2" />
+    <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
+    <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
+    <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
+    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
+    <option name="SHOW_DIRTY_RECURSIVELY" value="false" />
+    <option name="LIMIT_HISTORY" value="true" />
+    <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
+    <option name="UPDATE_FILTER_SCOPE_NAME" />
+    <option name="USE_COMMIT_MESSAGE_MARGIN" value="false" />
+    <option name="COMMIT_MESSAGE_MARGIN_SIZE" value="72" />
+    <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
+    <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
+    <option name="LAST_COMMIT_MESSAGE" value="2.0.10" />
+    <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
+    <option name="FILE_HISTORY_DIALOG_COMMENTS_SPLITTER_PROPORTION" value="0.8" />
+    <option name="FILE_HISTORY_DIALOG_SPLITTER_PROPORTION" value="0.5" />
+    <option name="ACTIVE_VCS_NAME" />
+    <option name="UPDATE_GROUP_BY_PACKAGES" value="false" />
+    <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
+    <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
+    <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
+    <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
+    <MESSAGE value="2.0.10" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+    </breakpoint-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/krdavc/video/recorder/TestBasicVideo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="13" selection-start="655" selection-end="655" vertical-scroll-proportion="0.5170068" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/krdavc/video/recorder/VideoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="60" selection-start="1370" selection-end="1370" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="jar://D:/develop/android-sdk-windows/platforms/android-10/android-src.zip!/com/android/internal/os/ZygoteInit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="jar://D:/develop/android-sdk-windows/platforms/android-10/android-src.zip!/android/app/ActivityThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1969" column="0" selection-start="79803" selection-end="79803" vertical-scroll-proportion="0.2479062" />
+      </provider>
+    </entry>
+    <entry file="jar://D:/develop/android-sdk-windows/platforms/android-10/android-src.zip!/android/app/Activity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="jar://D:/develop/android-sdk-windows/platforms/android-10/android-src.zip!/android/app/LoadedApk.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="742" column="0" selection-start="29987" selection-end="29987" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="jar://D:/develop/android-sdk-windows/platforms/android-10/android-src.zip!/android/media/AudioRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="515" column="0" selection-start="18726" selection-end="18726" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/videomain.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="10" selection-start="1247" selection-end="1247" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/krdavc/video/recorder/utils/SDUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="130" column="25" selection-start="2912" selection-end="2912" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/develop/android-sdk-windows/platforms/android-10/android-src.zip!/android/media/CameraProfile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="13" selection-start="991" selection-end="991" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/develop/android-sdk-windows/platforms/android-10/android-src.zip!/android/media/CamcorderProfile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="147" column="35" selection-start="4575" selection-end="4575" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/develop/android-sdk-windows/platforms/android-10/android-src.zip!/android/media/MediaRecorder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="274" column="16" selection-start="9884" selection-end="9884" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/krdavc/video/recorder/VideoRecordService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="211" column="63" selection-start="6606" selection-end="6606" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/krdavc/video/recorder/utils/UtilMethod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="200" column="32" selection-start="5570" selection-end="5570" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#2826#3073#0" expanded="true" />
+            <element signature="e#3062#3063#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/krdavc/video/recorder/VideoRecordActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="631" column="50" selection-start="20263" selection-end="20263" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#17150#17383#0" expanded="true" />
+            <element signature="e#17360#17361#0" expanded="true" />
+            <element signature="e#27435#27640#0" expanded="true" />
+            <element signature="e#27629#27630#0" expanded="true" />
+            <element signature="class#RepeatTimerTask#0;class#VideoRecordActivity#0" expanded="true" />
+            <element signature="class#AvailableStoreTimerTask#0;class#VideoRecordActivity#0" expanded="true" />
+            <element signature="class#BatteryReceiver#0;class#VideoRecordActivity#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="44" selection-start="1690" selection-end="1690" vertical-scroll-proportion="0.74319726">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>krdavc-video2.0</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Android</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>xmlvm</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.5</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Android|krdavc-video2.0</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.6</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>sass-stdlib</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	>
+	<Button
+		android:id="@+id/record"
+		style="@style/style_fill_wrap"
+		android:text="aaaaaaaaa"
+	></Button>
+	
+	<Button
+		android:id="@+id/cancel"
+		style="@style/style_fill_wrap"
+		android:text="bbbbbbbbb"
+	></Button>
+	
+		<SurfaceView
+			android:id="@+id/surface_camera"
+			style="@style/style_fill_fill"
+			android:fadingEdge="none"
+		></SurfaceView>
+</LinearLayout>

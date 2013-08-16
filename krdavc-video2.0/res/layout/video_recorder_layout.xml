@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent" 
+	android:layout_height="match_parent"
+	android:background="@drawable/bg"
+	>
+
+	<RelativeLayout
+		android:id="@+id/camera_container"
+		android:layout_width="fill_parent"
+		android:layout_height="300px"
+		android:fadingEdge="none"
+	>
+	
+		<SurfaceView
+			android:id="@+id/surface_camera"
+			style="@style/style_fill_fill"
+			android:fadingEdge="none"
+		></SurfaceView>
+	
+		<TextView
+			android:id="@+id/sdcard_info"
+			style="@style/style_wrap_wrap"
+			android:text="剩余空间:1234M"
+			android:textColor="#008000"
+			android:layout_alignBottom="@+id/surface_camera"
+			android:layout_marginLeft="10dip"
+		></TextView>
+	
+	</RelativeLayout>
+
+	<ToggleButton 
+		android:id="@+id/show_camera_toggleButton" 
+		android:textOn="" android:textOff=""
+		android:layout_width="150px"
+		android:layout_height="150px"
+		android:layout_alignParentRight="true"
+		android:checked="true"
+		android:background="@null"
+		  />
+		  
+	<LinearLayout
+		style="@style/style_fill_wrap"
+		android:layout_alignParentBottom="true"
+		android:orientation="vertical"
+	>
+		<Button
+			android:id="@+id/record"
+			style="@style/style_fill_wrap"
+			android:text="record"
+		></Button>
+		
+		<Button
+			android:id="@+id/cancel"
+			style="@style/style_fill_wrap"
+			android:text="cancel"
+		></Button>
+	</LinearLayout>
+</RelativeLayout>

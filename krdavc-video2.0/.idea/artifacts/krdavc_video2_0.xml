@@ -1,0 +1,19 @@
+<component name="ArtifactManager">
+  <artifact type="apk" name="krdavc-video2.0">
+    <output-path>$PROJECT_DIR$/release/</output-path>
+    <properties id="android-properties">
+      <options>
+        <option name="includeSystemProGuardCfgFile" value="true" />
+        <option name="keyAlias" value="makeapp-release" />
+        <option name="keyPassword" value="bWFrZWFwcDYyOA==" />
+        <option name="keyStorePassword" value="bWFrZWFwcDYyOA==" />
+        <option name="keyStoreUrl" value="file://D:/develop/android-sdk-windows/keystore/makeapp-release.keystore" />
+        <option name="proGuardCfgFileUrl" value="file://" />
+        <option name="signingMode" value="RELEASE_SIGNED" />
+      </options>
+    </properties>
+    <root id="archive" name="krdavc-video2.0.apk">
+      <element id="android-final-package" facet="krdavc-video2.0/android/Android" />
+    </root>
+  </artifact>
+</component>
