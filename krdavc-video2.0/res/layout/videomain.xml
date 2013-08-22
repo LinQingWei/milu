@@ -1,82 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        >
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
 
-<LinearLayout
-        android:orientation="vertical"
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:background="@drawable/bg"
-        >
+        android:orientation="vertical" >
 
-  <LinearLayout
-          android:orientation="horizontal"
-          android:layout_width="fill_parent"
-          android:layout_height="0dp"
-          android:paddingTop="0dip"
-          android:paddingRight="15dip"
-          android:gravity="center_horizontal|right"
-          android:layout_weight="12">
-    <ImageView
-            android:id="@+id/cameraType"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:text="摄像头"
-            android:src="@drawable/video"
-            android:paddingTop="20dp"
-            android:paddingRight="10dip"
-            android:tag="1"
-            android:visibility="invisible"
-            android:onClick="onChangeCamera"
-            android:layout_gravity="right|center_horizontal"/>
-    <Button
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:text="      "
-            android:background="@color/transparent"
-            android:onClick="onToggleVideoView"
-            android:paddingRight="10dip"
-            android:tag="1"
-            android:layout_gravity="center"/>
-  </LinearLayout>
-  <LinearLayout
-          android:id="@+id/videoView"
-          android:orientation="vertical"
-          android:layout_width="fill_parent"
-          android:layout_height="0dp"
-          android:layout_gravity="center_vertical|right"
-          android:visibility="invisible"
-          android:layout_weight="88">
-    <View
-            android:id="@+id/surfaceView"
+        <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="260dp"
-            android:layout_gravity="right|center_vertical"
-            />
-    <TextView
-            android:id="@+id/textView"
-            android:text="80%"
-            android:layout_gravity="right|center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            ></TextView>
-  </LinearLayout>
- </LinearLayout>
+            android:layout_height="0dp"
+            android:layout_weight="12"
+            android:gravity="center_horizontal|right"
+            android:orientation="horizontal"
+            android:paddingRight="15dip"
+            android:paddingTop="0dip" >
 
- <LinearLayout
-         android:id="@+id/videoBg"
-         android:orientation="vertical"
-         android:layout_width="fill_parent"
-         android:layout_height="fill_parent"
-         android:visibility="gone"
-         android:background="@android:color/background_dark"
-         >
+            <ImageView
+                android:id="@+id/cameraType"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:layout_gravity="right|center_horizontal"
+                android:onClick="onChangeCamera"
+                android:paddingRight="10dip"
+                android:paddingTop="20dp"
+                android:src="@drawable/video"
+                android:tag="1"
+                android:text="摄像头"
+                android:visibility="invisible" />
 
- </LinearLayout>
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:background="@color/transparent"
+                android:onClick="onToggleVideoView"
+                android:tag="1"
+                android:text="      " />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/videoView"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center_vertical|right"
+            android:layout_weight="88"
+            android:orientation="vertical"
+            android:visibility="invisible" >
+
+            <View
+                android:id="@+id/surfaceView"
+                android:layout_width="fill_parent"
+                android:layout_height="260dp"
+                android:layout_gravity="right|center_vertical" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:text="80%" >
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/videoBg"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@android:color/background_dark"
+        android:orientation="vertical"
+        android:visibility="gone" >
+    </LinearLayout>
 
 </FrameLayout>
-
-
