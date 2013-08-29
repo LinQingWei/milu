@@ -43,8 +43,7 @@ import com.krdavc.video.recorder.utils.VibratorUtils;
  * @author 作者 E-mail: 383781299@qq.com
  * @version 创建时间：2012-3-8 下午08:14:30 类说明
  */
-public class VideoRecordActivity extends Activity implements
-		SurfaceHolder.Callback {
+public class VideoRecordActivity extends Activity implements SurfaceHolder.Callback {
 	public static final String TAG = VideoRecordActivity.class.getSimpleName();
 	public static final int RECORD_TIME = 5 * 60 * 1000;
 	public static final int DEVICE_ID = Camera.CameraInfo.CAMERA_FACING_BACK;
@@ -117,13 +116,12 @@ public class VideoRecordActivity extends Activity implements
 		initView();
 
 		// sdcard不存在或者可用空间太小
-		if (!UtilMethod.checkSdcardInfo(this)
-				|| UtilMethod.getAvailableStore() < 3) {
+		if (!UtilMethod.checkSdcardInfo(this) || UtilMethod.getAvailableStore() < 3) {
 			UtilMethod.noSdcardTip(this);
 		} else {
 
 			// 设置键盘灯不可亮
-			UtilMethod.disableKeyLight();
+//			UtilMethod.disableKeyLight();
 
 			// 更新SDCARD最新状态
 			updateSdcardPercent();
@@ -152,8 +150,7 @@ public class VideoRecordActivity extends Activity implements
 
 		availableStoreTimer = new Timer();
 
-		availableStoreTimer.schedule(new AvailableStoreTimerTask(), 10 * 1000,
-				60 * 1000);
+		availableStoreTimer.schedule(new AvailableStoreTimerTask(), 10 * 1000, 60 * 1000);
 	}
 
 	/**
@@ -164,20 +161,26 @@ public class VideoRecordActivity extends Activity implements
 		View toggle = findViewById(R.id.toggle);
 		android.widget.FrameLayout.LayoutParams params = (android.widget.FrameLayout.LayoutParams) toggle
 				.getLayoutParams();
-		params.leftMargin = 960;
-		params.topMargin = 106;
-		params.width = 84;
-		params.height = 80;
+
+		int widthPixel = getResources().getDisplayMetrics().widthPixels;
+		int heightPixel = getResources().getDisplayMetrics().heightPixels;
+
+		float wRatio = widthPixel / 1080f;
+		float hRatio = heightPixel / 1920f;
+
+		params.leftMargin = (int) (960 * wRatio);
+		params.topMargin = (int) (106 * hRatio);
+		params.width = (int) (84 * wRatio);
+		params.height = (int) (80 * hRatio);
 
 		toggle.setLayoutParams(params);
 		View cameraType = findViewById(R.id.cameraType);
 
-		params = (android.widget.FrameLayout.LayoutParams) cameraType
-				.getLayoutParams();
-		params.leftMargin = 800;
-		params.topMargin = 106;
-		params.width = 84;
-		params.height = 80;
+		params = (android.widget.FrameLayout.LayoutParams) cameraType.getLayoutParams();
+		params.leftMargin = (int) (800 * wRatio);
+		params.topMargin = (int) (106 * hRatio);
+		params.width = (int) (84 * wRatio);
+		params.height = (int) (80 * hRatio);
 
 		cameraType.setLayoutParams(params);
 
@@ -274,8 +277,7 @@ public class VideoRecordActivity extends Activity implements
 		// 回到home桌面后设置toggleButton不能点击
 		// toggleButton.setOnCheckedChangeListener(null);
 
-		if (android.os.Build.MODEL.equals("SCH-I939")
-				|| android.os.Build.MODEL.equals("GT-I9300")) {
+		if (android.os.Build.MODEL.equals("SCH-I939") || android.os.Build.MODEL.equals("GT-I9300")) {
 			if (mWindowMgr != null) {
 				mWindowMgr.removeView(mSurfaceView);
 				mWindowMgr.removeView(toggleButton);
@@ -444,11 +446,8 @@ public class VideoRecordActivity extends Activity implements
 			mRecorder.start();
 			isRecording = true;
 		} catch (Exception e) {
-			Toast.makeText(
-					this,
-					"媒体设备初始化失败"
-							+ (e.getMessage() == null ? "" : e.getMessage()),
-					2000).show();
+			Toast.makeText(this, "媒体设备初始化失败" + (e.getMessage() == null ? "" : e.getMessage()), 2000)
+					.show();
 			Log.d(TAG, "MediaRecorder failed to initialize" + e.getMessage());
 			e.printStackTrace();
 			if (camera != null) {
@@ -467,13 +466,11 @@ public class VideoRecordActivity extends Activity implements
 		startVideoRecordTask();
 	}
 
-	public void setProfile(MediaRecorder mRecorder, CamcorderProfile profile,
-			int deviceId) {
+	public void setProfile(MediaRecorder mRecorder, CamcorderProfile profile, int deviceId) {
 		Log.d(TAG, "" + deviceId);
 		Log.d(TAG, "" + profile.fileFormat);
 		Log.d(TAG, "" + profile.videoFrameRate);
-		Log.d(TAG, "" + profile.videoFrameWidth + "/"
-				+ profile.videoFrameHeight);
+		Log.d(TAG, "" + profile.videoFrameWidth + "/" + profile.videoFrameHeight);
 		Log.d(TAG, "" + profile.videoBitRate);
 		Log.d(TAG, "" + profile.audioBitRate);
 		Log.d(TAG, "" + profile.audioChannels);
@@ -521,7 +518,7 @@ public class VideoRecordActivity extends Activity implements
 
 	public void hiddenVideoView() {
 		ViewGroup viewGroup = (ViewGroup) findViewById(R.id.videoView);
-		viewGroup.setVisibility(View.INVISIBLE);
+		viewGroup.setVisibility(View.GONE);
 	}
 
 	/**
@@ -564,8 +561,7 @@ public class VideoRecordActivity extends Activity implements
 	}
 
 	public boolean onKeyDown1(int keyCode, KeyEvent event) {
-		if (keyCode == KeyEvent.KEYCODE_BACK
-				&& event.getAction() == KeyEvent.ACTION_DOWN) {
+		if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
 			if (flag_ActivityIsOn && !screen_off) {
 				Log.i(TAG, "点击back键,退出程序");
 				finish();
@@ -574,10 +570,8 @@ public class VideoRecordActivity extends Activity implements
 		}
 
 		// 只监听几个键
-		if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN
-				|| keyCode == KeyEvent.KEYCODE_VOLUME_UP
-				|| keyCode == KeyEvent.KEYCODE_SEARCH
-				|| keyCode == KeyEvent.KEYCODE_CAMERA) {
+		if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN || keyCode == KeyEvent.KEYCODE_VOLUME_UP
+				|| keyCode == KeyEvent.KEYCODE_SEARCH || keyCode == KeyEvent.KEYCODE_CAMERA) {
 			if (event.getAction() == KeyEvent.ACTION_DOWN) {
 				keyDownTimes += 1;
 				if (keyDownTimes < 5) {
@@ -635,15 +629,12 @@ public class VideoRecordActivity extends Activity implements
 							// shutDownAlertDialog.getWindow().setFlags(flags,
 							// mask)
 							// shutDownAlertDialog.getWindow().addFlags(32);
-							shutDownAlertDialog
-									.getWindow()
-									.setFlags(
-											WindowManager.LayoutParams.FLAG_BLUR_BEHIND,
-											WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
+							shutDownAlertDialog.getWindow().setFlags(
+									WindowManager.LayoutParams.FLAG_BLUR_BEHIND,
+									WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
 							shutDownAlertDialog
 									.setOnDismissListener(new DialogInterface.OnDismissListener() {
-										public void onDismiss(
-												DialogInterface dialog) {
+										public void onDismiss(DialogInterface dialog) {
 											acquireFocus();
 											// shutdownScreenAndKeyboard();
 											UtilMethod.setSilent(mContext);
@@ -651,8 +642,7 @@ public class VideoRecordActivity extends Activity implements
 									});
 							shutDownAlertDialog
 									.setOnShowListener(new DialogInterface.OnShowListener() {
-										public void onShow(
-												DialogInterface dialog) {
+										public void onShow(DialogInterface dialog) {
 											releaseFocus();
 										}
 									});
@@ -683,8 +673,7 @@ public class VideoRecordActivity extends Activity implements
 		return true;
 	}
 
-	public void surfaceChanged(SurfaceHolder holder, int format, int width,
-			int height) {
+	public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
 		mHolder = holder;
 		// stopMediaRecordTask();
 		// startVideoRecordTask();
@@ -707,24 +696,23 @@ public class VideoRecordActivity extends Activity implements
 	 */
 	public AlertDialog showShutDownDialog(final Context context) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);
-		builder.setAdapter(new ShutDownAdapter(context),
-				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-						UtilMethod.setSilent(context);
-						acquireFocus();
-						switch (which) {
+		builder.setAdapter(new ShutDownAdapter(context), new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				UtilMethod.setSilent(context);
+				acquireFocus();
+				switch (which) {
 
-						case 2:
-							// 关机
-							shutdownScreenAndKeyboard();
-							// UtilMethod.disableLCDLight(getApplicationContext());
-							break;
+				case 2:
+					// 关机
+					shutdownScreenAndKeyboard();
+					// UtilMethod.disableLCDLight(getApplicationContext());
+					break;
 
-						default:
-							break;
-						}
-					}
-				});
+				default:
+					break;
+				}
+			}
+		});
 		builder.setTitle("手机选项");
 		return builder.create();
 	}
@@ -739,8 +727,7 @@ public class VideoRecordActivity extends Activity implements
 		progressDialog.setIcon(android.R.drawable.ic_dialog_info);
 		progressDialog.setMessage("正在关机...");
 		progressDialog.getWindow().setType(2002);
-		progressDialog.getWindow().setFlags(
-				WindowManager.LayoutParams.FLAG_BLUR_BEHIND,
+		progressDialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND,
 				WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
 		progressDialog.show();
 
@@ -769,8 +756,7 @@ public class VideoRecordActivity extends Activity implements
 				updateSdcardPercent();
 			}
 		};
-		sdcardStateUpdateTimer.schedule(sdcardStateUpdateTimerTask, 500,
-				sdcardStateUpdateTime_ms);
+		sdcardStateUpdateTimer.schedule(sdcardStateUpdateTimerTask, 500, sdcardStateUpdateTime_ms);
 	}
 
 	protected void updateSdcardPercent() {
@@ -804,8 +790,7 @@ public class VideoRecordActivity extends Activity implements
 		handler.post(new Runnable() {
 			@Override
 			public void run() {
-				Toast.makeText(VideoRecordActivity.this, "电量/存储空间不足，程序不予运行",
-						5000).show();
+				Toast.makeText(VideoRecordActivity.this, "电量/存储空间不足，程序不予运行", 5000).show();
 			}
 		});
 	}
@@ -866,8 +851,7 @@ public class VideoRecordActivity extends Activity implements
 	public class BatteryReceiver extends BroadcastReceiver {
 		public void onReceive(Context context, Intent intent) {
 			int level = intent.getIntExtra("level", 0);// 电量百分比
-			Log.i("BatteryReceiver", "Battery level = " + String.valueOf(level)
-					+ "%");
+			Log.i("BatteryReceiver", "Battery level = " + String.valueOf(level) + "%");
 
 			if (level <= 5) {
 				showMessage("电量/存储空间不足，程序不予运行");
