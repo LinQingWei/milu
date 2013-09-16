@@ -1,4 +1,4 @@
-package com.krdavc.video.recorder;
+﻿package com.krdavc.video.recorder;
 
 import java.io.File;
 import java.io.IOException;
@@ -315,8 +315,8 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		Intent intent1 = new Intent();
 		intent1.setClass(mContext, VideoService.class);
 		stopService(intent1);
-		System.exit(0);
 		super.onDestroy();
+		System.exit(0);
 	}
 
 	@TargetApi(Build.VERSION_CODES.GINGERBREAD)
