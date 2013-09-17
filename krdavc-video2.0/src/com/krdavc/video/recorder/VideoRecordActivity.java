@@ -501,12 +501,10 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 	}
 
 	public void onToggleVideoView(View view) {
-		Object obj = view.getTag();
-		if (obj == null) {
-			view.setTag(new Object());
+		ViewGroup viewGroup = (ViewGroup) findViewById(R.id.videoView);
+		if (viewGroup.getVisibility() == View.GONE) {
 			showVideoView();
 		} else {
-			view.setTag(null);
 			hiddenVideoView();
 		}
 	}
@@ -686,7 +684,7 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 	}
 
 	public void surfaceDestroyed(SurfaceHolder holder) {
-		stopMediaRecordTask();
+//		stopMediaRecordTask();
 	}
 
 	/**
