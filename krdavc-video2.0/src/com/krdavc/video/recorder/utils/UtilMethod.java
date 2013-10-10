@@ -171,6 +171,7 @@ public class UtilMethod {
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		}
 
 	}

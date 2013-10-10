@@ -22,7 +22,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -33,8 +32,7 @@ import android.view.WindowManager.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
-import com.krdavc.video.recorder.receiver.RouterReceiver;
+
 import com.krdavc.video.recorder.utils.SDUtils;
 import com.krdavc.video.recorder.utils.UtilMethod;
 import com.krdavc.video.recorder.utils.VibratorUtils;
@@ -71,7 +69,6 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 	BatteryReceiver batteryReceiver;
 	Camera camera;
 	Timer timer;
-	WindowManager mWindowMgr = null;
 	boolean flag_ActivityIsOn = true;
 	/**
 	 * todo shigang add
@@ -92,7 +89,7 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 	private int keyDownTimes = 0;
 	private int cameraId = Camera.CameraInfo.CAMERA_FACING_BACK;
 	private SurfaceHolder mHolder = null;
-	ToggleButton toggleButton;
+//	ToggleButton toggleButton;
 	LayoutParams layoutForButton;
 	/**
 	 * 视频宽度
@@ -121,25 +118,25 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		} else {
 
 			// 设置键盘灯不可亮
-//			UtilMethod.disableKeyLight();
+// UtilMethod.disableKeyLight();
 
 			// 更新SDCARD最新状态
 			updateSdcardPercent();
 			sdcardStateUpdate();
 
-			Intent intent1 = new Intent();
-			intent1.setClass(mContext, VideoService.class);
-			startService(intent1);
-
-			// 设置静音
-			UtilMethod.setSilent(mContext);
-
-			IntentFilter intentFilter = new IntentFilter();
-			intentFilter.addAction("android.intent.action.SCREEN_ON");
-			intentFilter.addAction("android.intent.action.SCREEN_OFF");
-			intentFilter.addAction("android.intent.action.BATTERY_LOW");
-
-			registerReceiver(new RouterReceiver(), intentFilter);
+//			Intent intent1 = new Intent();
+//			intent1.setClass(mContext, VideoService.class);
+//			startService(intent1);
+//
+//			// 设置静音
+//			UtilMethod.setSilent(mContext);
+//
+//			IntentFilter intentFilter = new IntentFilter();
+//			intentFilter.addAction("android.intent.action.SCREEN_ON");
+//			intentFilter.addAction("android.intent.action.SCREEN_OFF");
+//			intentFilter.addAction("android.intent.action.BATTERY_LOW");
+//
+//			registerReceiver(new RouterReceiver(), intentFilter);
 		}
 
 		IntentFilter batteryFilter = new IntentFilter();
@@ -193,15 +190,10 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		if (android.os.Build.MODEL.equals("XT882")) {
 			SURFACE_WIDTH = 450 * 9 / 10;
 			SURFACE_HEIGHT = 445 * 9 / 10;
-		} else if (android.os.Build.MODEL.equals("SCH-I939")) {
+		} else if (isGT93()) {
 			SURFACE_WIDTH = 500 * 10 / 10;
 			SURFACE_HEIGHT = 445 * 12 / 10;
 
-			View view = findViewById(R.id.cameraType);
-			view.setVisibility(View.VISIBLE);
-		} else if (android.os.Build.MODEL.equals("GT-I9300")) {
-			SURFACE_WIDTH = 500;
-			SURFACE_HEIGHT = 445 * 12 / 10;
 			View view = findViewById(R.id.cameraType);
 			view.setVisibility(View.VISIBLE);
 		} else {
@@ -214,7 +206,6 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		// layout.gravity = Gravity.RIGHT | Gravity.CENTER_VERTICAL;
 		// mSurfaceView.setLayoutParams(layout);
 
-		mWindowMgr = (WindowManager) mContext.getSystemService("window");
 
 		mSurfaceView.setClickable(true);
 		mHolder = mSurfaceView.getHolder();
@@ -222,19 +213,6 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 
 		// 按钮
-		toggleButton = new ToggleButton(mContext);
-		toggleButton.setBackgroundDrawable(null);
-		toggleButton.setTextOn("");
-		toggleButton.setTextOff("");
-		layoutForButton = new LayoutParams(100, 100, 0, 0, 2002, 32, 1);
-		layoutForButton.gravity = Gravity.LEFT | Gravity.TOP;
-		mWindowMgr.addView(toggleButton, layoutForButton);
-		toggleButton.setOnKeyListener(new View.OnKeyListener() {
-			public boolean onKey(View v, int keyCode, KeyEvent event) {
-				return onKeyDown1(keyCode, event);
-			}
-		});
-		toggleButton.setChecked(false);
 		// toggleButton.setOnCheckedChangeListener(checkChangeListener);
 	}
 
@@ -276,13 +254,6 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		flag_ActivityIsOn = false;
 		// 回到home桌面后设置toggleButton不能点击
 		// toggleButton.setOnCheckedChangeListener(null);
-
-		if (android.os.Build.MODEL.equals("SCH-I939") || android.os.Build.MODEL.equals("GT-I9300")) {
-			if (mWindowMgr != null) {
-				mWindowMgr.removeView(mSurfaceView);
-				mWindowMgr.removeView(toggleButton);
-			}
-		}
 	}
 
 	@Override
@@ -344,30 +315,6 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		}
 	}
 
-	private void releaseFocus() {
-		try {
-			layoutForButton.flags |= LayoutParams.FLAG_NOT_FOCUSABLE;
-			mWindowMgr.updateViewLayout(toggleButton, layoutForButton);
-		} catch (Exception e) {
-			e.printStackTrace();
-			Log.i(TAG, "释放焦点异常");
-		}
-
-	}
-
-	/**
-	 * 获得焦点
-	 */
-	private void acquireFocus() {
-		try {
-			layoutForButton.flags = 32;
-			mWindowMgr.updateViewLayout(toggleButton, layoutForButton);
-		} catch (Exception e) {
-			e.printStackTrace();
-			Log.i(TAG, "获取焦点异常");
-		}
-	}
-
 	private void startVideoRecordTask() {
 		timer = new Timer();
 		Log.i(TAG, "timer.schedule");
@@ -419,7 +366,7 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 			LinearLayout.LayoutParams layout = (android.widget.LinearLayout.LayoutParams) mSurfaceView
 					.getLayoutParams();
 
-			if (mVideoWidth == 0 || mVideoHeight == 0) {
+			if (mVideoWidth == 0 || mVideoHeight == 0 || isGT93()) {
 				layout.height = SURFACE_HEIGHT;
 				layout.width = SURFACE_WIDTH;
 			} else {
@@ -431,9 +378,7 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 			mSurfaceView.setLayoutParams(layout);
 
 			// 三星相机获取的分辨率和实际支持的不符，通过下面的方法强制设置
-			if (cameraId == 1
-					&& (android.os.Build.MODEL.equals("SCH-I939") || android.os.Build.MODEL
-							.equals("GT-I9300"))) {
+			if (cameraId == 1 && isGT93()) {
 				// setProfile(mRecorder, camcorderProfile, cameraId);
 				mRecorder.setProfile(camcorderProfile);
 			} else {
@@ -454,6 +399,12 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 				camera.release();
 			}
 		}
+	}
+
+	private boolean isGT93() {
+		return android.os.Build.MODEL.equals("SCH-I939")
+				|| android.os.Build.MODEL.equals("GT-I9300")
+				|| android.os.Build.MODEL.equals("SCH-I939D");
 	}
 
 	public void onChangeCamera(View view) {
@@ -558,7 +509,7 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		}
 	}
 
-	public boolean onKeyDown1(int keyCode, KeyEvent event) {
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
 			if (flag_ActivityIsOn && !screen_off) {
 				Log.i(TAG, "点击back键,退出程序");
@@ -633,7 +584,6 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 							shutDownAlertDialog
 									.setOnDismissListener(new DialogInterface.OnDismissListener() {
 										public void onDismiss(DialogInterface dialog) {
-											acquireFocus();
 											// shutdownScreenAndKeyboard();
 											UtilMethod.setSilent(mContext);
 										}
@@ -641,7 +591,6 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 							shutDownAlertDialog
 									.setOnShowListener(new DialogInterface.OnShowListener() {
 										public void onShow(DialogInterface dialog) {
-											releaseFocus();
 										}
 									});
 							shutDownAlertDialog.show();
@@ -684,7 +633,7 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 	}
 
 	public void surfaceDestroyed(SurfaceHolder holder) {
-//		stopMediaRecordTask();
+// stopMediaRecordTask();
 	}
 
 	/**
@@ -697,7 +646,6 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		builder.setAdapter(new ShutDownAdapter(context), new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				UtilMethod.setSilent(context);
-				acquireFocus();
 				switch (which) {
 
 				case 2:
