@@ -89,7 +89,7 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 	private int keyDownTimes = 0;
 	private int cameraId = Camera.CameraInfo.CAMERA_FACING_BACK;
 	private SurfaceHolder mHolder = null;
-//	ToggleButton toggleButton;
+// ToggleButton toggleButton;
 	LayoutParams layoutForButton;
 	/**
 	 * 视频宽度
@@ -124,19 +124,19 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 			updateSdcardPercent();
 			sdcardStateUpdate();
 
-//			Intent intent1 = new Intent();
-//			intent1.setClass(mContext, VideoService.class);
-//			startService(intent1);
+// Intent intent1 = new Intent();
+// intent1.setClass(mContext, VideoService.class);
+// startService(intent1);
 //
-//			// 设置静音
-//			UtilMethod.setSilent(mContext);
+// // 设置静音
+// UtilMethod.setSilent(mContext);
 //
-//			IntentFilter intentFilter = new IntentFilter();
-//			intentFilter.addAction("android.intent.action.SCREEN_ON");
-//			intentFilter.addAction("android.intent.action.SCREEN_OFF");
-//			intentFilter.addAction("android.intent.action.BATTERY_LOW");
+// IntentFilter intentFilter = new IntentFilter();
+// intentFilter.addAction("android.intent.action.SCREEN_ON");
+// intentFilter.addAction("android.intent.action.SCREEN_OFF");
+// intentFilter.addAction("android.intent.action.BATTERY_LOW");
 //
-//			registerReceiver(new RouterReceiver(), intentFilter);
+// registerReceiver(new RouterReceiver(), intentFilter);
 		}
 
 		IntentFilter batteryFilter = new IntentFilter();
@@ -162,11 +162,16 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		int widthPixel = getResources().getDisplayMetrics().widthPixels;
 		int heightPixel = getResources().getDisplayMetrics().heightPixels;
 
+// final int toTop = 106;
+// final int toLeft = 960;
+		final int toTop = 50; // 939d
+		final int toLeft = 920; // 939d
+
 		float wRatio = widthPixel / 1080f;
 		float hRatio = heightPixel / 1920f;
+		params.leftMargin = (int) (toLeft * wRatio);
+		params.topMargin = (int) (toTop * hRatio);
 
-		params.leftMargin = (int) (960 * wRatio);
-		params.topMargin = (int) (106 * hRatio);
 		params.width = (int) (84 * wRatio);
 		params.height = (int) (80 * hRatio);
 
@@ -174,8 +179,8 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		View cameraType = findViewById(R.id.cameraType);
 
 		params = (android.widget.FrameLayout.LayoutParams) cameraType.getLayoutParams();
-		params.leftMargin = (int) (800 * wRatio);
-		params.topMargin = (int) (106 * hRatio);
+		params.leftMargin = (int) ((toLeft - 160) * wRatio);
+		params.topMargin = (int) (toTop * hRatio);
 		params.width = (int) (84 * wRatio);
 		params.height = (int) (80 * hRatio);
 
@@ -205,7 +210,6 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		// LinearLayout.LayoutParams(SURFACE_WIDTH, SURFACE_HEIGHT);
 		// layout.gravity = Gravity.RIGHT | Gravity.CENTER_VERTICAL;
 		// mSurfaceView.setLayoutParams(layout);
-
 
 		mSurfaceView.setClickable(true);
 		mHolder = mSurfaceView.getHolder();
@@ -634,6 +638,7 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 
 	public void surfaceDestroyed(SurfaceHolder holder) {
 // stopMediaRecordTask();
+		mHolder = null;
 	}
 
 	/**
@@ -748,6 +753,9 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		 */
 		@Override
 		public void run() {
+			if (mHolder == null) {
+				return;
+			}
 			Log.i(TAG, "RepeatTimerTask .run");
 			stopMediaRecorder();
 			try {

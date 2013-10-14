@@ -41,6 +41,7 @@ public class UtilMethod {
 	public static int getAvailableStore() {
 		int result = 0;
 		try {
+			SDUtils.createRoutePath();
 			// 取得sdcard文件路径
 			StatFs statFs = new StatFs(SDUtils.routePath());
 			// 获取BLOCK数量
