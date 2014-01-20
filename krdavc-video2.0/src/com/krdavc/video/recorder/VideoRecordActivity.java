@@ -58,16 +58,11 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 	 */
 	public static boolean screen_off = false;
 	/**
-	 * 是否正在录制
-	 */
-	public boolean isRecording = false;
-	/**
 	 * 当前activity是否处于活动状态
 	 */
 	TextView text;
 	Timer availableStoreTimer;
 	BatteryReceiver batteryReceiver;
-	Camera camera;
 	Timer timer;
 	boolean flag_ActivityIsOn = true;
 	/**
@@ -80,25 +75,23 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 	 * ApplicationContext
 	 */
 	private Activity mContext;
-	private MediaRecorder mRecorder;// 录制视频类
 	private SurfaceView mSurfaceView;// 显示视频的控件
-	private String mOutputFileName;
+	private static String mOutputFileName;
 	/**
 	 * 按键点击次数(达到一定次数即为长按)
 	 */
 	private int keyDownTimes = 0;
-	private int cameraId = Camera.CameraInfo.CAMERA_FACING_BACK;
-	private SurfaceHolder mHolder = null;
-// ToggleButton toggleButton;
+	private static int cameraId = Camera.CameraInfo.CAMERA_FACING_BACK;
+	// ToggleButton toggleButton;
 	LayoutParams layoutForButton;
 	/**
 	 * 视频宽度
 	 */
-	private int mVideoWidth;
+	private static int mVideoWidth;
 	/**
 	 * 视频高度
 	 */
-	private int mVideoHeight;
+	private static int mVideoHeight;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -118,25 +111,11 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		} else {
 
 			// 设置键盘灯不可亮
-// UtilMethod.disableKeyLight();
+			// UtilMethod.disableKeyLight();
 
 			// 更新SDCARD最新状态
 			updateSdcardPercent();
 			sdcardStateUpdate();
-
-// Intent intent1 = new Intent();
-// intent1.setClass(mContext, VideoService.class);
-// startService(intent1);
-//
-// // 设置静音
-// UtilMethod.setSilent(mContext);
-//
-// IntentFilter intentFilter = new IntentFilter();
-// intentFilter.addAction("android.intent.action.SCREEN_ON");
-// intentFilter.addAction("android.intent.action.SCREEN_OFF");
-// intentFilter.addAction("android.intent.action.BATTERY_LOW");
-//
-// registerReceiver(new RouterReceiver(), intentFilter);
 		}
 
 		IntentFilter batteryFilter = new IntentFilter();
@@ -162,10 +141,10 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		int widthPixel = getResources().getDisplayMetrics().widthPixels;
 		int heightPixel = getResources().getDisplayMetrics().heightPixels;
 
-// final int toTop = 106;
-// final int toLeft = 960;
-		final int toTop = 50; // 939d
-		final int toLeft = 920; // 939d
+		final int toTop = 106;
+		final int toLeft = 960;
+		// final int toTop = 50; // 939d
+		// final int toLeft = 920; // 939d
 
 		float wRatio = widthPixel / 1080f;
 		float hRatio = heightPixel / 1920f;
@@ -212,17 +191,12 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		// mSurfaceView.setLayoutParams(layout);
 
 		mSurfaceView.setClickable(true);
-		mHolder = mSurfaceView.getHolder();
-		mHolder.addCallback(this);
-		mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+		SurfaceHolder h = mSurfaceView.getHolder();
+		h.addCallback(this);
+		h.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 
 		// 按钮
 		// toggleButton.setOnCheckedChangeListener(checkChangeListener);
-	}
-
-	@Override
-	protected void onStart() {
-		super.onStart();
 	}
 
 	@Override
@@ -245,10 +219,6 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 	protected void onResume() {
 		super.onResume();
 		flag_ActivityIsOn = true;
-		// if (toggleButton != null) {
-		// toggleButton.setOnCheckedChangeListener(checkChangeListener);
-		// }
-
 	}
 
 	@Override
@@ -261,41 +231,31 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 	}
 
 	@Override
-	public void finish() {
-		super.finish();
-		Log.i(TAG, "finish");
-		UtilMethod.releaseWakeLock();
-	}
-
-	@Override
 	protected void onDestroy() {
 		Log.i(TAG, "onDestroy");
 
 		stopMediaRecordTask();
 
 		UtilMethod.releaseWakeLock();
-		UtilMethod.enableKeyLight();
+		// by john
+		// UtilMethod.enableKeyLight();
 
 		if (batteryReceiver != null) {
 			unregisterReceiver(batteryReceiver);
 		}
 
-		if (availableStoreTimer != null) {
-			availableStoreTimer.cancel();
-		}
-
 		UtilMethod.enableLCDLight(mContext);
 
-		// 停止service
-		Intent intent1 = new Intent();
-		intent1.setClass(mContext, VideoService.class);
-		stopService(intent1);
+		// by john
+		// Intent intent1 = new Intent();
+		// intent1.setClass(mContext, VideoService.class);
+		// stopService(intent1);
 		super.onDestroy();
 		System.exit(0);
 	}
 
 	@TargetApi(Build.VERSION_CODES.GINGERBREAD)
-	private Camera initCamera(int deviceId) {
+	private static Camera initCamera(int deviceId) {
 		try {
 			Camera mCamera = Camera.open(deviceId);
 			Camera.Parameters camParams = mCamera.getParameters();
@@ -323,18 +283,24 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		timer = new Timer();
 		Log.i(TAG, "timer.schedule");
 		timer.schedule(new RepeatTimerTask(), RECORD_TIME, RECORD_TIME);
-		startVideoRecord();
+		VideoApplication.sCamera = initCamera(cameraId);
+		if (VideoApplication.sCamera == null) {
+			return;
+		}
+		VideoApplication.sRecorder = new MediaRecorder();
+		startVideoRecord(VideoApplication.sCamera, VideoApplication.sRecorder);
 	}
 
 	@TargetApi(Build.VERSION_CODES.GINGERBREAD)
-	private void startVideoRecord() {
-		if (isRecording)
-			return;
+	private static void startVideoRecord(Camera c, MediaRecorder r) {
 
 		// mWindowMgr.addView(mSurfaceView, layoutForSurfaceView);
 
 		mOutputFileName = SDUtils.makeOutputFileName();
-
+		SurfaceHolder sHolder = VideoApplication.sHolder;
+		if (sHolder == null) {
+			return;
+		}
 		File outFile = new File(mOutputFileName);
 		if (outFile.exists()) {
 			outFile.delete();
@@ -343,69 +309,47 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		}
 
 		try {
-			camera = initCamera(cameraId);
-			if (camera == null) {
-				Toast.makeText(this, "连接不到摄像头设备!", 1000).show();
-				return;
-			}
-			camera.unlock();
-			mRecorder = new MediaRecorder();
+			c.unlock();
 
-			mRecorder.setOnErrorListener(new MediaRecorder.OnErrorListener() {
+			r.setOnErrorListener(new MediaRecorder.OnErrorListener() {
 				@Override
 				public void onError(MediaRecorder mr, int what, int extra) {
 					Log.d(TAG, "onError=" + what + " " + extra);
 				}
 			});
 			// mRecorder.setMaxDuration(RECORD_TIME);
-			mRecorder.setCamera(camera);
-			mRecorder.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
-			mRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
-			mRecorder.setPreviewDisplay(mHolder.getSurface());
+			r.setCamera(c);
+			r.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
+			r.setVideoSource(MediaRecorder.VideoSource.CAMERA);
+
+			r.setPreviewDisplay(sHolder.getSurface());
 			CamcorderProfile camcorderProfile = CamcorderProfile.get(cameraId,
 					CamcorderProfile.QUALITY_HIGH);
 			mVideoWidth = camcorderProfile.videoFrameWidth;
 			mVideoHeight = camcorderProfile.videoFrameHeight;
 
-			LinearLayout.LayoutParams layout = (android.widget.LinearLayout.LayoutParams) mSurfaceView
-					.getLayoutParams();
-
-			if (mVideoWidth == 0 || mVideoHeight == 0 || isGT93()) {
-				layout.height = SURFACE_HEIGHT;
-				layout.width = SURFACE_WIDTH;
-			} else {
-				int width = getResources().getDisplayMetrics().widthPixels / 2;
-				int height = mVideoWidth * width / mVideoHeight;
-				layout.width = width;
-				layout.height = height;
-			}
-			mSurfaceView.setLayoutParams(layout);
-
 			// 三星相机获取的分辨率和实际支持的不符，通过下面的方法强制设置
 			if (cameraId == 1 && isGT93()) {
 				// setProfile(mRecorder, camcorderProfile, cameraId);
-				mRecorder.setProfile(camcorderProfile);
+				r.setProfile(camcorderProfile);
 			} else {
-				mRecorder.setProfile(camcorderProfile);
+				r.setProfile(camcorderProfile);
 			}
-			mRecorder.setOutputFile(mOutputFileName);
+			r.setOutputFile(mOutputFileName);
 
 			Log.d(TAG, "Video Path " + mOutputFileName);
-			mRecorder.prepare();
-			mRecorder.start();
-			isRecording = true;
+			r.prepare();
+			r.start();
 		} catch (Exception e) {
-			Toast.makeText(this, "媒体设备初始化失败" + (e.getMessage() == null ? "" : e.getMessage()), 2000)
-					.show();
 			Log.d(TAG, "MediaRecorder failed to initialize" + e.getMessage());
 			e.printStackTrace();
-			if (camera != null) {
-				camera.release();
+			if (c != null) {
+				c.release();
 			}
 		}
 	}
 
-	private boolean isGT93() {
+	private static boolean isGT93() {
 		return android.os.Build.MODEL.equals("SCH-I939")
 				|| android.os.Build.MODEL.equals("GT-I9300")
 				|| android.os.Build.MODEL.equals("SCH-I939D");
@@ -477,39 +421,40 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 	/**
 	 * 停止录制
 	 */
-	private void stopMediaRecorder() {
+	private static void stopMediaRecorder(MediaRecorder r, Camera c) {
 		try {
-			if (mRecorder != null) {
-				mRecorder.stop();
-				mRecorder.release();
-				mRecorder = null;
-				isRecording = false;
+			if (r != null) {
+				r.stop();
+				r.release();
+				r = null;
 			}
 
 		} catch (Exception e) {
-			isRecording = false;
 		}
 
 		try {
-			if (camera != null) {
+			if (c != null) {
 				try {
-					camera.reconnect();
+					c.reconnect();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				camera.stopPreview();
-				camera.release();
+				c.stopPreview();
+				c.release();
+				c = null;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			isRecording = false;
 		}
 	}
 
 	private void stopMediaRecordTask() {
-		stopMediaRecorder();
+		stopMediaRecorder(VideoApplication.sRecorder, VideoApplication.sCamera);
+		VideoApplication.sRecorder = null;
+		VideoApplication.sCamera = null;
 		if (timer != null) {
 			timer.cancel();
+			timer = null;
 		}
 	}
 
@@ -539,7 +484,7 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 					switch (keyCode) {
 					case KeyEvent.KEYCODE_VOLUME_DOWN:
 						Log.i(TAG, "长按VOLUME_DOWN事件,发送ManualRecord消息");
-						if (isRecording) {
+						if (timer != null) {
 							VibratorUtils.stop(mContext);
 							stopMediaRecordTask();
 						} else {
@@ -625,20 +570,41 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 	}
 
 	public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-		mHolder = holder;
-		// stopMediaRecordTask();
-		// startVideoRecordTask();
 	}
 
 	public void surfaceCreated(SurfaceHolder holder) {
-		mHolder = holder;
-		stopMediaRecordTask();
-		startVideoRecordTask();
+		Log.e(VideoRecordActivity.TAG, "create from activity");
+		SurfaceHolder h = VideoApplication.sHolder;
+		VideoApplication.sHolder = holder;
+		if (h == null) {// 首次创建
+			stopMediaRecordTask();
+			startVideoRecordTask();
+		} else { // 后台转前台
+			Intent service = new Intent(this, BackgroundVideoRecorder.class);
+			stopService(service);
+		}
+		LinearLayout.LayoutParams layout = (android.widget.LinearLayout.LayoutParams) mSurfaceView
+				.getLayoutParams();
+
+		if (mVideoWidth == 0 || mVideoHeight == 0 || isGT93()) {
+			layout.height = SURFACE_HEIGHT;
+			layout.width = SURFACE_WIDTH;
+		} else {
+			int width = getResources().getDisplayMetrics().widthPixels / 2;
+			int height = mVideoWidth * width / mVideoHeight;
+			layout.width = width;
+			layout.height = height;
+		}
+		mSurfaceView.requestLayout();
 	}
 
 	public void surfaceDestroyed(SurfaceHolder holder) {
-// stopMediaRecordTask();
-		mHolder = null;
+		Log.e(VideoRecordActivity.TAG, "destory from activity");
+		// stopMediaRecordTask();
+		if (!isFinishing()) {
+			Intent service = new Intent(this, BackgroundVideoRecorder.class);
+			startService(service);
+		}
 	}
 
 	/**
@@ -746,42 +712,37 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		});
 	}
 
+	private static final String FROM_BK_GRD = "FROM_BK_GRD";
+
 	public class RepeatTimerTask extends TimerTask {
+
 		/**
 		 * The task to run should be specified in the implementation of the
 		 * {@code run()} method.
 		 */
 		@Override
 		public void run() {
-			if (mHolder == null) {
-				return;
-			}
 			Log.i(TAG, "RepeatTimerTask .run");
-			stopMediaRecorder();
-			try {
-				startVideoRecord();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			runOnUiThread(new Runnable() {
+
+				@Override
+				public void run() {
+					stopMediaRecorder(VideoApplication.sRecorder, VideoApplication.sCamera);
+					try {
+						VideoApplication.sCamera = initCamera(cameraId);
+						if (VideoApplication.sCamera == null) {
+							return;
+						}
+						VideoApplication.sRecorder = new MediaRecorder();
+						startVideoRecord(VideoApplication.sCamera, VideoApplication.sRecorder);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+
 		}
 
-		/**
-		 * Cancels the {@code TimerTask} and removes it from the {@code Timer}'s
-		 * queue. Generally, it returns {@code false} if the call did not
-		 * prevent a {@code TimerTask} from running at least once. Subsequent
-		 * calls have no effect.
-		 * 
-		 * @return {@code true} if the call prevented a scheduled execution from
-		 *         taking place, {@code false} otherwise.
-		 */
-		@Override
-		public boolean cancel() {
-			Log.i(TAG, "RepeatTimerTask .cancel");
-
-			stopMediaRecorder();
-
-			return super.cancel();
-		}
 	}
 
 	public class AvailableStoreTimerTask extends TimerTask {
