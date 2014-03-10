@@ -19,6 +19,8 @@ import android.hardware.Camera;
 import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
 import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -177,9 +179,7 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		} else if (isGT93()) {
 			SURFACE_WIDTH = 500 * 10 / 10;
 			SURFACE_HEIGHT = 445 * 12 / 10;
-
-			View view = findViewById(R.id.cameraType);
-			view.setVisibility(View.VISIBLE);
+			cameraType.setVisibility(View.VISIBLE);
 		} else {
 			SURFACE_WIDTH = 1280 / 2;
 			SURFACE_HEIGHT = 720 / 2;
@@ -190,10 +190,13 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		// layout.gravity = Gravity.RIGHT | Gravity.CENTER_VERTICAL;
 		// mSurfaceView.setLayoutParams(layout);
 
-		mSurfaceView.setClickable(true);
+		// mSurfaceView.setClickable(true);
 		SurfaceHolder h = mSurfaceView.getHolder();
 		h.addCallback(this);
 		h.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+		if (VERSION.SDK_INT < VERSION_CODES.GINGERBREAD) {
+			showVideoView();
+		}
 
 		// 按钮
 		// toggleButton.setOnCheckedChangeListener(checkChangeListener);
@@ -257,7 +260,12 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 	@TargetApi(Build.VERSION_CODES.GINGERBREAD)
 	private static Camera initCamera(int deviceId) {
 		try {
-			Camera mCamera = Camera.open(deviceId);
+			Camera mCamera = null;
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
+				mCamera = Camera.open(deviceId);
+			} else {
+				mCamera = Camera.open();
+			}
 			Camera.Parameters camParams = mCamera.getParameters();
 			// if (camParams.isZoomSupported()) {
 			// camParams.setZoom(2);
@@ -323,8 +331,12 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 			r.setVideoSource(MediaRecorder.VideoSource.CAMERA);
 
 			r.setPreviewDisplay(sHolder.getSurface());
-			CamcorderProfile camcorderProfile = CamcorderProfile.get(cameraId,
-					CamcorderProfile.QUALITY_HIGH);
+			CamcorderProfile camcorderProfile = null;
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
+				camcorderProfile = CamcorderProfile.get(cameraId, CamcorderProfile.QUALITY_HIGH);
+			} else {
+				camcorderProfile = CamcorderProfile.get(0);
+			}
 			mVideoWidth = camcorderProfile.videoFrameWidth;
 			mVideoHeight = camcorderProfile.videoFrameHeight;
 
@@ -582,6 +594,8 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		} else { // 后台转前台
 			Intent service = new Intent(this, BackgroundVideoRecorder.class);
 			stopService(service);
+			stopMediaRecordTask();
+			startVideoRecordTask();
 		}
 		LinearLayout.LayoutParams layout = (android.widget.LinearLayout.LayoutParams) mSurfaceView
 				.getLayoutParams();

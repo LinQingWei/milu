@@ -35,9 +35,8 @@
         <LinearLayout
             android:id="@+id/videoView"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:layout_gravity="center_vertical|right"
-            android:layout_weight="88"
             android:orientation="vertical"
             android:visibility="invisible" >
 

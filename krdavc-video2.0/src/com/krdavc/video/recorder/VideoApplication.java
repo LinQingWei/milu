@@ -13,6 +13,9 @@ public class VideoApplication extends Application {
 
 	public static MediaRecorder sRecorder;
 	public static Camera sCamera;
+	/**
+	 * 摄像头预览的holder，在后台或前台的时候，这个holder会赋不同的值
+	 */
 	public static SurfaceHolder sHolder;
 
 	@Override
