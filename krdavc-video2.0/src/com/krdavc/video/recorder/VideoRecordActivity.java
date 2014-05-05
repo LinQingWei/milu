@@ -2,6 +2,7 @@
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -16,6 +17,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.hardware.Camera;
+import android.hardware.Camera.CameraInfo;
+import android.hardware.Camera.Parameters;
 import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
 import android.os.Build;
@@ -137,8 +140,7 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 	private void initView() {
 
 		View toggle = findViewById(R.id.toggle);
-		android.widget.FrameLayout.LayoutParams params = (android.widget.FrameLayout.LayoutParams) toggle
-				.getLayoutParams();
+		
 
 		int widthPixel = getResources().getDisplayMetrics().widthPixels;
 		int heightPixel = getResources().getDisplayMetrics().heightPixels;
@@ -150,22 +152,26 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 
 		float wRatio = widthPixel / 1080f;
 		float hRatio = heightPixel / 1920f;
+		android.widget.FrameLayout.LayoutParams params = new android.widget.FrameLayout.LayoutParams((int)(84 * wRatio), (int)(80 * hRatio));
 		params.leftMargin = (int) (toLeft * wRatio);
 		params.topMargin = (int) (toTop * hRatio);
-
-		params.width = (int) (84 * wRatio);
-		params.height = (int) (80 * hRatio);
 
 		toggle.setLayoutParams(params);
 		View cameraType = findViewById(R.id.cameraType);
 
-		params = (android.widget.FrameLayout.LayoutParams) cameraType.getLayoutParams();
+		params = new android.widget.FrameLayout.LayoutParams((int)(84 * wRatio), (int)(80 * hRatio));
 		params.leftMargin = (int) ((toLeft - 160) * wRatio);
 		params.topMargin = (int) (toTop * hRatio);
 		params.width = (int) (84 * wRatio);
 		params.height = (int) (80 * hRatio);
 
 		cameraType.setLayoutParams(params);
+		
+		params = new android.widget.FrameLayout.LayoutParams((int)(84 * wRatio), (int)(80 * hRatio));
+		params.leftMargin = (int) ((toLeft - 360) * wRatio);
+		params.topMargin = (int) (toTop * hRatio);
+
+		findViewById(R.id.set_param).setLayoutParams(params);
 
 		text = (TextView) findViewById(R.id.textView);
 		text.setText("80.7%");
@@ -200,6 +206,25 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 
 		// 按钮
 		// toggleButton.setOnCheckedChangeListener(checkChangeListener);
+	}
+
+	public void onSetParam(View v) {
+		final Camera sCamera = VideoApplication.sCamera;
+		final Parameters p = sCamera.getParameters();
+		List<String> li = p.getSupportedSceneModes();
+		final String[] items = new String[li.size()];
+		for (int i = 0; i < items.length; i++) {
+			items[i] = li.get(i);
+		}
+		new AlertDialog.Builder(this).setItems(items, new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				String mode = items[which];
+				p.setSceneMode(mode);
+				sCamera.setParameters(p);
+			}
+		}).show();
 	}
 
 	@Override
@@ -296,11 +321,11 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 			return;
 		}
 		VideoApplication.sRecorder = new MediaRecorder();
-		startVideoRecord(VideoApplication.sCamera, VideoApplication.sRecorder);
+		startVideoRecord(this, VideoApplication.sCamera, VideoApplication.sRecorder);
 	}
 
 	@TargetApi(Build.VERSION_CODES.GINGERBREAD)
-	private static void startVideoRecord(Camera c, MediaRecorder r) {
+	private static void startVideoRecord(Activity activity, Camera c, MediaRecorder r) {
 
 		// mWindowMgr.addView(mSurfaceView, layoutForSurfaceView);
 
@@ -325,6 +350,20 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 					Log.d(TAG, "onError=" + what + " " + extra);
 				}
 			});
+			int rotation = activity.getWindowManager().getDefaultDisplay().getRotation();
+
+			CameraInfo info = new CameraInfo();
+			Camera.getCameraInfo(cameraId, info);
+			if (info.facing == CameraInfo.CAMERA_FACING_FRONT) {
+				rotation = (info.orientation - rotation + 360) % 360;
+			} else { // back-facing camera
+				rotation = (info.orientation + rotation) % 360;
+			}
+			if (cameraId == CameraInfo.CAMERA_FACING_FRONT) {
+				r.setOrientationHint(rotation);
+			} else {
+				r.setOrientationHint(rotation);
+			}
 			// mRecorder.setMaxDuration(RECORD_TIME);
 			r.setCamera(c);
 			r.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
@@ -748,7 +787,8 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 							return;
 						}
 						VideoApplication.sRecorder = new MediaRecorder();
-						startVideoRecord(VideoApplication.sCamera, VideoApplication.sRecorder);
+						startVideoRecord(VideoRecordActivity.this, VideoApplication.sCamera,
+								VideoApplication.sRecorder);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

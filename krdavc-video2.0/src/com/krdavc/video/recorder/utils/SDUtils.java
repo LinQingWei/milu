@@ -125,7 +125,7 @@ public class SDUtils {
 	public static String makeOutputFileName() {
 		Time time = new Time();
 		time.setToNow();
-		return String.format("%s%s%s", SDUtils.routePath(), time.format2445(), ".rar");
+		return String.format("%s%s%s", SDUtils.routePath(), time.format2445(), ".avi");
 	}
 
 }
