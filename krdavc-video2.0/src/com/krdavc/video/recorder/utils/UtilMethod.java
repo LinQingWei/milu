@@ -200,11 +200,6 @@ public class UtilMethod {
 	public static void disableLCDLight(Activity context) {
 		View view = context.findViewById(R.id.videoBg);
 		view.setVisibility(View.VISIBLE);
-
-		if (context instanceof VideoRecordActivity) {
-			VideoRecordActivity videoRecordActivity = (VideoRecordActivity) context;
-			videoRecordActivity.hiddenVideoView();
-		}
 	}
 
 	/**

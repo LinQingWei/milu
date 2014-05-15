@@ -39,7 +39,7 @@
                 android:background="@color/transparent"
                 android:textColor="#ffffff"
                 android:textSize="23sp"
-                android:text="夜" >
+                android:text="自动" >
             </Button>
         </FrameLayout>
 

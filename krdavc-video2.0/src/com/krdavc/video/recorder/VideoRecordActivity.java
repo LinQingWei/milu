@@ -34,6 +34,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -140,7 +141,6 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 	private void initView() {
 
 		View toggle = findViewById(R.id.toggle);
-		
 
 		int widthPixel = getResources().getDisplayMetrics().widthPixels;
 		int heightPixel = getResources().getDisplayMetrics().heightPixels;
@@ -152,22 +152,25 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 
 		float wRatio = widthPixel / 1080f;
 		float hRatio = heightPixel / 1920f;
-		android.widget.FrameLayout.LayoutParams params = new android.widget.FrameLayout.LayoutParams((int)(84 * wRatio), (int)(80 * hRatio));
+		android.widget.FrameLayout.LayoutParams params = new android.widget.FrameLayout.LayoutParams(
+				(int) (84 * wRatio), (int) (80 * hRatio));
 		params.leftMargin = (int) (toLeft * wRatio);
 		params.topMargin = (int) (toTop * hRatio);
 
 		toggle.setLayoutParams(params);
 		View cameraType = findViewById(R.id.cameraType);
 
-		params = new android.widget.FrameLayout.LayoutParams((int)(84 * wRatio), (int)(80 * hRatio));
+		params = new android.widget.FrameLayout.LayoutParams((int) (84 * wRatio),
+				(int) (80 * hRatio));
 		params.leftMargin = (int) ((toLeft - 160) * wRatio);
 		params.topMargin = (int) (toTop * hRatio);
 		params.width = (int) (84 * wRatio);
 		params.height = (int) (80 * hRatio);
 
 		cameraType.setLayoutParams(params);
-		
-		params = new android.widget.FrameLayout.LayoutParams((int)(84 * wRatio), (int)(80 * hRatio));
+
+		params = new android.widget.FrameLayout.LayoutParams((int) (84 * wRatio),
+				(int) (80 * hRatio));
 		params.leftMargin = (int) ((toLeft - 360) * wRatio);
 		params.topMargin = (int) (toTop * hRatio);
 
@@ -201,7 +204,7 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		h.addCallback(this);
 		h.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 		if (VERSION.SDK_INT < VERSION_CODES.GINGERBREAD) {
-			showVideoView();
+			findViewById(R.id.videoView).setVisibility(View.VISIBLE);
 		}
 
 		// 按钮
@@ -212,19 +215,20 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		final Camera sCamera = VideoApplication.sCamera;
 		final Parameters p = sCamera.getParameters();
 		List<String> li = p.getSupportedSceneModes();
-		final String[] items = new String[li.size()];
-		for (int i = 0; i < items.length; i++) {
-			items[i] = li.get(i);
+		if (li == null) {
+			Toast.makeText(this, "不支持模式切换", Toast.LENGTH_SHORT).show();
+			return;
 		}
-		new AlertDialog.Builder(this).setItems(items, new DialogInterface.OnClickListener() {
-
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				String mode = items[which];
-				p.setSceneMode(mode);
-				sCamera.setParameters(p);
-			}
-		}).show();
+		Button btn = (Button) v;
+		String mode = p.getSceneMode();
+		if (Camera.Parameters.SCENE_MODE_NIGHT.equals(mode)) {
+			btn.setText("自动");
+			p.setSceneMode(Camera.Parameters.SCENE_MODE_AUTO);
+		} else {
+			btn.setText("夜间");
+			p.setSceneMode(Camera.Parameters.SCENE_MODE_NIGHT);
+		}
+		sCamera.setParameters(p);
 	}
 
 	@Override
@@ -452,21 +456,11 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 
 	public void onToggleVideoView(View view) {
 		ViewGroup viewGroup = (ViewGroup) findViewById(R.id.videoView);
-		if (viewGroup.getVisibility() == View.GONE) {
-			showVideoView();
+		if (viewGroup.getVisibility() == View.INVISIBLE) {
+			viewGroup.setVisibility(View.VISIBLE);
 		} else {
-			hiddenVideoView();
+			viewGroup.setVisibility(View.INVISIBLE);
 		}
-	}
-
-	public void showVideoView() {
-		ViewGroup viewGroup = (ViewGroup) findViewById(R.id.videoView);
-		viewGroup.setVisibility(View.VISIBLE);
-	}
-
-	public void hiddenVideoView() {
-		ViewGroup viewGroup = (ViewGroup) findViewById(R.id.videoView);
-		viewGroup.setVisibility(View.GONE);
 	}
 
 	/**
@@ -557,6 +551,7 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 							VibratorUtils.stop(mContext);
 							UtilMethod.setAirplaneMode(mContext, true);
 							UtilMethod.disableLCDLight(mContext);
+							findViewById(R.id.videoView).setVisibility(View.INVISIBLE);
 							screen_off = true;
 						}
 						break;
