@@ -17,16 +17,14 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.hardware.Camera;
-import android.hardware.Camera.CameraInfo;
 import android.hardware.Camera.Parameters;
 import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
 import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -154,26 +152,21 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		float hRatio = heightPixel / 1920f;
 		android.widget.FrameLayout.LayoutParams params = new android.widget.FrameLayout.LayoutParams(
 				(int) (84 * wRatio), (int) (80 * hRatio));
+		params.gravity = Gravity.LEFT | Gravity.CENTER_VERTICAL;
 		params.leftMargin = (int) (toLeft * wRatio);
-		params.topMargin = (int) (toTop * hRatio);
-
 		toggle.setLayoutParams(params);
-		View cameraType = findViewById(R.id.cameraType);
 
+		View cameraType = findViewById(R.id.cameraType);
 		params = new android.widget.FrameLayout.LayoutParams((int) (84 * wRatio),
 				(int) (80 * hRatio));
+		params.gravity = Gravity.LEFT | Gravity.CENTER_VERTICAL;
 		params.leftMargin = (int) ((toLeft - 160) * wRatio);
-		params.topMargin = (int) (toTop * hRatio);
-		params.width = (int) (84 * wRatio);
-		params.height = (int) (80 * hRatio);
-
 		cameraType.setLayoutParams(params);
 
 		params = new android.widget.FrameLayout.LayoutParams((int) (84 * wRatio),
 				(int) (80 * hRatio));
+		params.gravity = Gravity.LEFT | Gravity.CENTER_VERTICAL;
 		params.leftMargin = (int) ((toLeft - 360) * wRatio);
-		params.topMargin = (int) (toTop * hRatio);
-
 		findViewById(R.id.set_param).setLayoutParams(params);
 
 		text = (TextView) findViewById(R.id.textView);
@@ -203,13 +196,12 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		SurfaceHolder h = mSurfaceView.getHolder();
 		h.addCallback(this);
 		h.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-		if (VERSION.SDK_INT < VERSION_CODES.GINGERBREAD) {
-			findViewById(R.id.videoView).setVisibility(View.VISIBLE);
-		}
-
-		// 按钮
-		// toggleButton.setOnCheckedChangeListener(checkChangeListener);
+		// if (VERSION.SDK_INT < VERSION_CODES.GINGERBREAD) {
+		findViewById(R.id.videoView).setVisibility(View.VISIBLE);
 	}
+
+	// 按钮
+	// toggleButton.setOnCheckedChangeListener(checkChangeListener);
 
 	public void onSetParam(View v) {
 		final Camera sCamera = VideoApplication.sCamera;
@@ -283,7 +275,6 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		// intent1.setClass(mContext, VideoService.class);
 		// stopService(intent1);
 		super.onDestroy();
-		System.exit(0);
 	}
 
 	@TargetApi(Build.VERSION_CODES.GINGERBREAD)
@@ -354,20 +345,21 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 					Log.d(TAG, "onError=" + what + " " + extra);
 				}
 			});
-			int rotation = activity.getWindowManager().getDefaultDisplay().getRotation();
+			// int rotation =
+			// activity.getWindowManager().getDefaultDisplay().getRotation();
 
-			CameraInfo info = new CameraInfo();
-			Camera.getCameraInfo(cameraId, info);
-			if (info.facing == CameraInfo.CAMERA_FACING_FRONT) {
-				rotation = (info.orientation - rotation + 360) % 360;
-			} else { // back-facing camera
-				rotation = (info.orientation + rotation) % 360;
-			}
-			if (cameraId == CameraInfo.CAMERA_FACING_FRONT) {
-				r.setOrientationHint(rotation);
-			} else {
-				r.setOrientationHint(rotation);
-			}
+			// CameraInfo info = new CameraInfo();
+			// Camera.getCameraInfo(cameraId, info);
+			// if (info.facing == CameraInfo.CAMERA_FACING_FRONT) {
+			// rotation = (info.orientation - rotation + 360) % 360;
+			// } else { // back-facing camera
+			// rotation = (info.orientation + rotation) % 360;
+			// }
+			// if (cameraId == CameraInfo.CAMERA_FACING_FRONT) {
+			// r.setOrientationHint(rotation);
+			// } else {
+			// r.setOrientationHint(rotation);
+			// }
 			// mRecorder.setMaxDuration(RECORD_TIME);
 			r.setCamera(c);
 			r.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
@@ -466,7 +458,7 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 	/**
 	 * 停止录制
 	 */
-	private static void stopMediaRecorder(MediaRecorder r, Camera c) {
+	private static void stopMediaRecorder(Context context, MediaRecorder r, Camera c) {
 		try {
 			if (r != null) {
 				r.stop();
@@ -476,7 +468,6 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 
 		} catch (Exception e) {
 		}
-
 		try {
 			if (c != null) {
 				try {
@@ -491,10 +482,14 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		if (mOutputFileName != null) {
+			ZipIntentService.startZip(context, mOutputFileName, "123");
+		}
 	}
 
 	private void stopMediaRecordTask() {
-		stopMediaRecorder(VideoApplication.sRecorder, VideoApplication.sCamera);
+		stopMediaRecorder(this, VideoApplication.sRecorder, VideoApplication.sCamera);
 		VideoApplication.sRecorder = null;
 		VideoApplication.sCamera = null;
 		if (timer != null) {
@@ -775,7 +770,8 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 
 				@Override
 				public void run() {
-					stopMediaRecorder(VideoApplication.sRecorder, VideoApplication.sCamera);
+					stopMediaRecorder(getApplication(), VideoApplication.sRecorder,
+							VideoApplication.sCamera);
 					try {
 						VideoApplication.sCamera = initCamera(cameraId);
 						if (VideoApplication.sCamera == null) {

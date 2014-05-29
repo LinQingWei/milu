@@ -1,5 +1,7 @@
 package com.krdavc.video.recorder;
 
+import com.krdavc.video.recorder.utils.StorageOptions;
+
 import android.app.Application;
 import android.hardware.Camera;
 import android.media.MediaRecorder;
@@ -21,6 +23,7 @@ public class VideoApplication extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		StorageOptions.determineStorageOptions();
 		// 处理全局异常
 		VideoCrashHandler crashHandler = VideoCrashHandler.getInstance();
 		// 注册crashHandler

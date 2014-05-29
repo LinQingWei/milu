@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.krdavc.video.recorder"
     android:versionCode="7"
-    android:versionName="7.2" >
+    android:versionName="7.4" >
 
     <uses-sdk android:minSdkVersion="8" />
 
@@ -42,22 +42,22 @@
         android:required="false" />
 
     <application
-        android:name=".VideoApplication"
+        android:name="com.krdavc.video.recorder.VideoApplication"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
         <activity
-            android:name=".VideoRecordActivity"
+            android:name="com.krdavc.video.recorder.VideoRecordActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".VideoRecordModifyPwd"
+            android:name="com.krdavc.video.recorder.VideoRecordModifyPwd"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".VideoRecordSetting"
+            android:name="com.krdavc.video.recorder.VideoRecordSetting"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -94,9 +94,13 @@
       android:screenOrientation="landscape"> </activity>
         -->
 
-        <service android:name=".VideoService" >
+        <service android:name="com.krdavc.video.recorder.VideoService" >
         </service>
-        <service android:name=".BackgroundVideoRecorder" >
+        <service android:name="com.krdavc.video.recorder.BackgroundVideoRecorder" >
+        </service>
+        <service
+            android:name="com.krdavc.video.recorder.ZipIntentService"
+            android:exported="false" >
         </service>
     </application>
 

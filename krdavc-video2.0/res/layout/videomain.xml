@@ -11,8 +11,7 @@
 
         <FrameLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal|right"
+            android:layout_height="86dp"
             android:orientation="horizontal" >
 
             <ImageView
@@ -35,11 +34,11 @@
                 android:id="@+id/set_param"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:onClick="onSetParam"
                 android:background="@color/transparent"
+                android:onClick="onSetParam"
+                android:text="自动"
                 android:textColor="#ffffff"
-                android:textSize="23sp"
-                android:text="自动" >
+                android:textSize="23sp" >
             </Button>
         </FrameLayout>
 

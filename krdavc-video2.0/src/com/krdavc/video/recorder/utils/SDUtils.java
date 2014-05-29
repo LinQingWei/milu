@@ -13,8 +13,7 @@ import android.text.format.Time;
 public class SDUtils {
 
 	/**
-	 * 默认的广告在SD卡上的存放路径
-	 * 注意：此路径不包括广告名
+	 * 默认的广告在SD卡上的存放路径 注意：此路径不包括广告名
 	 */
 	public static final String ROUTE_SDCARD_PATH = "/route/";
 
@@ -27,41 +26,21 @@ public class SDUtils {
 	 * @return 以字符串形式返回SD卡的根目录，如果SD卡无法使用，则返回null
 	 */
 	public static String sdcardRootPath() {
-		if (android.os.Build.MODEL.equals("SCH-I939") || android.os.Build.MODEL.equals("GT-I9300")
-				|| android.os.Build.MODEL.equals("SCH-I939D")
-				|| android.os.Build.MODEL.equals("SCH-I959")) {
-			return "/mnt/extSdCard";
+		if (StorageOptions.paths != null && StorageOptions.paths.length != 0) {
+			return StorageOptions.paths[0];
 		}
-
-		if (android.os.Build.MODEL.contains("SCH") || android.os.Build.MODEL.contains("GT")) {
-			return "/mnt/extSdCard";
-		}
-		File xt882Path = new File(XT882_EX_SDCARD_PATH);
-		File xt3Xath = new File(XT3X_EX_SDCARD_PATH);
-		if (xt882Path.exists() && xt882Path.isDirectory()) {
-			return XT882_EX_SDCARD_PATH;
-		} else if (xt3Xath.exists() && xt3Xath.isDirectory()) {
-			return XT3X_EX_SDCARD_PATH;
-		} else {
-			boolean sdCardExist = sdCardExists();
-			if (sdCardExist) {
-				File sdDir = Environment.getExternalStorageDirectory();
-				return sdDir.getPath();
-			} else {
-				return null;
-			}
-		}
+		return null;
 	}
 
-// public static String sdcardRootPath() {
-// boolean sdCardExist = sdCardExists();
-// if (sdCardExist) {
-// File sdDir = Environment.getExternalStorageDirectory();
-// return sdDir.getPath();
-// }
-//
-// return null;
-// }
+	// public static String sdcardRootPath() {
+	// boolean sdCardExist = sdCardExists();
+	// if (sdCardExist) {
+	// File sdDir = Environment.getExternalStorageDirectory();
+	// return sdDir.getPath();
+	// }
+	//
+	// return null;
+	// }
 
 	/**
 	 * SD卡是否可用，如果可用，就可以对其读写

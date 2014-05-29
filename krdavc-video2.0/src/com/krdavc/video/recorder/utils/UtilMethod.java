@@ -109,8 +109,8 @@ public class UtilMethod {
 			// 存在sdcard
 			/*
 			 * File sdcardRoot = Environment.getExternalStorageDirectory();
-			 * StatFs stat = new StatFs(sdcardRoot.getPath()); long blockSize
-			 * = stat.getBlockSize(); long availableBlocks =
+			 * StatFs stat = new StatFs(sdcardRoot.getPath()); long blockSize =
+			 * stat.getBlockSize(); long availableBlocks =
 			 * stat.getAvailableBlocks(); File f = new File(path);
 			 * if(!f.exists()) { f.mkdirs(); }
 			 */
@@ -179,10 +179,14 @@ public class UtilMethod {
 
 	public static void setAirplaneMode(Context context, boolean setAirPlane) {
 
-		Settings.System.putInt(context.getContentResolver(), Settings.System.AIRPLANE_MODE_ON,
-				setAirPlane ? 1 : 0);
-		Intent intent = new Intent(Intent.ACTION_AIRPLANE_MODE_CHANGED);
-		context.sendBroadcast(intent);
+		try {
+			Settings.System.putInt(context.getContentResolver(), Settings.System.AIRPLANE_MODE_ON,
+					setAirPlane ? 1 : 0);
+			Intent intent = new Intent(Intent.ACTION_AIRPLANE_MODE_CHANGED);
+			context.sendBroadcast(intent);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -228,12 +232,11 @@ public class UtilMethod {
 
 	/*
 	 * public static int toggleButtonBacklight(SharedPreferences
-	 * paramSharedPreferences, boolean paramBoolean, String paramString) { int
-	 * i = 1; String str2 = ""; str2 = String.valueOf("chmod 644 " +
-	 * paramString + "\n" + "echo " + i + " > " + paramString + "\n"); String
-	 * str5; String str3 = str2 + "chmod 444 " + paramString + "\n"; str3 =
-	 * str5 + "echo " + i + " > " + paramString + "\n"; Log.i("aaa", "开始执行");
-	 * }
+	 * paramSharedPreferences, boolean paramBoolean, String paramString) { int i
+	 * = 1; String str2 = ""; str2 = String.valueOf("chmod 644 " + paramString +
+	 * "\n" + "echo " + i + " > " + paramString + "\n"); String str5; String
+	 * str3 = str2 + "chmod 444 " + paramString + "\n"; str3 = str5 + "echo " +
+	 * i + " > " + paramString + "\n"; Log.i("aaa", "开始执行"); }
 	 */
 
 	/**
