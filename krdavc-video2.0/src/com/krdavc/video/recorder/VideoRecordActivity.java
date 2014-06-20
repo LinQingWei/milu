@@ -323,7 +323,7 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 	private static void startVideoRecord(Activity activity, Camera c, MediaRecorder r) {
 
 		// mWindowMgr.addView(mSurfaceView, layoutForSurfaceView);
-
+		Log.d(TAG, "startVideoRecord before mk file path");
 		mOutputFileName = SDUtils.makeOutputFileName();
 		SurfaceHolder sHolder = VideoApplication.sHolder;
 		if (sHolder == null) {
@@ -335,10 +335,8 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		} else {
 			SDUtils.createRoutePath();
 		}
-
 		try {
 			c.unlock();
-
 			r.setOnErrorListener(new MediaRecorder.OnErrorListener() {
 				@Override
 				public void onError(MediaRecorder mr, int what, int extra) {

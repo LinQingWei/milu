@@ -2,8 +2,10 @@ package com.krdavc.video.recorder.utils;
 
 import java.io.File;
 
+import android.os.Build;
 import android.os.Environment;
 import android.text.format.Time;
+import android.util.Log;
 
 /**
  * SD卡工具类
@@ -26,6 +28,10 @@ public class SDUtils {
 	 * @return 以字符串形式返回SD卡的根目录，如果SD卡无法使用，则返回null
 	 */
 	public static String sdcardRootPath() {
+		if (Build.MODEL.equals("SM-G9006V")) {
+			return "/storage/extSdCard";
+		}
+		Log.d("SDUtils", "sdcardRootPath paths : " + StorageOptions.paths);
 		if (StorageOptions.paths != null && StorageOptions.paths.length != 0) {
 			return StorageOptions.paths[0];
 		}
@@ -79,14 +85,19 @@ public class SDUtils {
 	 * @return 如果已经存在，返回false；如果不存在，则创建所需的目录，并返回true
 	 */
 	public static boolean createRoutePath() {
-		if (!sdCardExists())
+		Log.e("SDUtils", "createRoutePath");
+		if (!sdCardExists()) {
+			Log.e("SDUtils", "sdCardExists no");
 			return false;
+		}
 
-		if (routePathExists())
+		if (routePathExists()) {
+			Log.e("SDUtils", "routePathExists no");
 			return false;
-
-		File adDir = new File(routePath());
-
+		}
+		String path = routePath();
+		Log.e("SDUtils", "mkdirs : " + path);
+		File adDir = new File(path);
 		return adDir.mkdirs();
 	}
 
@@ -94,7 +105,9 @@ public class SDUtils {
 	 * 获取本地广告文件在Android文件系统上的完整存放路径，如/mnt/sdcard/route/
 	 */
 	public static String routePath() {
-		return sdcardRootPath() + routeSDcardPath();
+		String path = sdcardRootPath() + routeSDcardPath();
+		Log.d("SDUtils", path);
+		return path;
 	}
 
 	/**

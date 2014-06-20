@@ -12,7 +12,7 @@ public class LogUtils
     /**
      * 日志级别
      */
-    private static final int LOG_LEVEL = Log.ERROR + 1;
+    private static final int LOG_LEVEL = Log.ERROR;
 
     /**
      * 异常栈位移
