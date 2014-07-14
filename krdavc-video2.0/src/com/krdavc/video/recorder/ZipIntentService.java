@@ -35,11 +35,11 @@ public class ZipIntentService extends IntentService {
 	 */
 	// TODO: Customize helper method
 	public static void startZip(Context context, String aviPath, String pwd) {
-		Intent intent = new Intent(context, ZipIntentService.class);
-		intent.setAction(ACTION_FOO);
-		intent.putExtra(EXTRA_PARAM1, aviPath);
-		intent.putExtra(EXTRA_PARAM2, pwd);
-		context.startService(intent);
+//		Intent intent = new Intent(context, ZipIntentService.class);
+//		intent.setAction(ACTION_FOO);
+//		intent.putExtra(EXTRA_PARAM1, aviPath);
+//		intent.putExtra(EXTRA_PARAM2, pwd);
+//		context.startService(intent);
 	}
 
 	private EncryptZipOutput mZipOutput;

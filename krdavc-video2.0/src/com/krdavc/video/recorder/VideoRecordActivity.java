@@ -23,6 +23,7 @@ import android.media.MediaRecorder;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -386,7 +387,7 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 			r.prepare();
 			r.start();
 		} catch (Exception e) {
-			Log.d(TAG, "MediaRecorder failed to initialize" + e.getMessage());
+			Log.d(TAG, "MediaRecorder failed to initialize " + e.getMessage());
 			e.printStackTrace();
 			if (c != null) {
 				c.release();
@@ -459,12 +460,20 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 	private static void stopMediaRecorder(Context context, MediaRecorder r, Camera c) {
 		try {
 			if (r != null) {
-				r.stop();
+				try {
+					r.stop();
+				} catch (RuntimeException e) {
+					if (!TextUtils.isEmpty(mOutputFileName)) {
+						new File(mOutputFileName).delete();
+					}
+				}
+
 				r.release();
 				r = null;
 			}
 
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		try {
 			if (c != null) {
@@ -473,14 +482,12 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				c.stopPreview();
 				c.release();
 				c = null;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		if (mOutputFileName != null) {
 			ZipIntentService.startZip(context, mOutputFileName, "123");
 		}
@@ -621,8 +628,15 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		} else { // 后台转前台
 			Intent service = new Intent(this, BackgroundVideoRecorder.class);
 			stopService(service);
-			stopMediaRecordTask();
-			startVideoRecordTask();
+			mSurfaceView.postDelayed(new Runnable() {
+
+				@Override
+				public void run() {
+					stopMediaRecordTask();
+					startVideoRecordTask();
+				}
+			}, 1000);
+
 		}
 		LinearLayout.LayoutParams layout = (android.widget.LinearLayout.LayoutParams) mSurfaceView
 				.getLayoutParams();

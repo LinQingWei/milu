@@ -28,14 +28,16 @@ public class SDUtils {
 	 * @return 以字符串形式返回SD卡的根目录，如果SD卡无法使用，则返回null
 	 */
 	public static String sdcardRootPath() {
+		String sdcardPath = "";
 		if (Build.MODEL.equals("SM-G9006V")) {
-			return "/storage/extSdCard";
+			sdcardPath = "/storage/extSdCard";
 		}
 		Log.d("SDUtils", "sdcardRootPath paths : " + StorageOptions.paths);
 		if (StorageOptions.paths != null && StorageOptions.paths.length != 0) {
-			return StorageOptions.paths[0];
+			sdcardPath = StorageOptions.paths[0];
 		}
-		return null;
+		sdcardPath += "/android/data/com.krdavc.video.recorder";
+		return sdcardPath;
 	}
 
 	// public static String sdcardRootPath() {
@@ -52,7 +54,8 @@ public class SDUtils {
 	 * SD卡是否可用，如果可用，就可以对其读写
 	 */
 	public static boolean sdCardExists() {
-		if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+		if (Environment.getExternalStorageState().equals(
+				Environment.MEDIA_MOUNTED)) {
 			return true;
 		} else {
 			return false;
@@ -98,7 +101,9 @@ public class SDUtils {
 		String path = routePath();
 		Log.e("SDUtils", "mkdirs : " + path);
 		File adDir = new File(path);
-		return adDir.mkdirs();
+		boolean result = adDir.mkdirs();
+		Log.e("SDUtils", "createRoutePath return " + result);
+		return result;
 	}
 
 	/**
@@ -117,7 +122,8 @@ public class SDUtils {
 	public static String makeOutputFileName() {
 		Time time = new Time();
 		time.setToNow();
-		return String.format("%s%s%s", SDUtils.routePath(), time.format2445(), ".avi");
+		return String.format("%s%s%s", SDUtils.routePath(), time.format2445(),
+				".rar");
 	}
 
 }
