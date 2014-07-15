@@ -2,8 +2,11 @@ package com.krdavc.video.recorder.utils;
 
 import java.io.File;
 
+import android.annotation.TargetApi;
+import android.content.Context;
 import android.os.Build;
 import android.os.Environment;
+import android.support.v4.content.ContextCompat;
 import android.text.format.Time;
 import android.util.Log;
 
@@ -27,18 +30,19 @@ public class SDUtils {
 	 * 
 	 * @return 以字符串形式返回SD卡的根目录，如果SD卡无法使用，则返回null
 	 */
-	public static String sdcardRootPath() {
-		String sdcardPath = "";
-		if (Build.MODEL.equals("SM-G9006V")) {
-			sdcardPath = "/storage/extSdCard";
-		}
-		Log.d("SDUtils", "sdcardRootPath paths : " + StorageOptions.paths);
-		if (StorageOptions.paths != null && StorageOptions.paths.length != 0) {
-			sdcardPath = StorageOptions.paths[0];
-		}
-		sdcardPath += "/android/data/com.krdavc.video.recorder";
-		return sdcardPath;
-	}
+	// public static String sdcardRootPath(Context c) {
+	// String sdcardPath = "";
+	// if (Build.MODEL.equals("SM-G9006V")) {
+	// sdcardPath = "/storage/extSdCard";
+	// }
+	// Log.d("SDUtils", "sdcardRootPath paths : " + StorageOptions.paths);
+	// if (StorageOptions.paths != null && StorageOptions.paths.length != 0) {
+	// sdcardPath = StorageOptions.paths[0];
+	// }
+	//
+	// sdcardPath += "/android/data/com.krdavc.video.recorder";
+	// return sdcardPath;
+	// }
 
 	// public static String sdcardRootPath() {
 	// boolean sdCardExist = sdCardExists();
@@ -54,25 +58,11 @@ public class SDUtils {
 	 * SD卡是否可用，如果可用，就可以对其读写
 	 */
 	public static boolean sdCardExists() {
-		if (Environment.getExternalStorageState().equals(
-				Environment.MEDIA_MOUNTED)) {
+		if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
 			return true;
 		} else {
 			return false;
 		}
-	}
-
-	/**
-	 * 判断SD卡上录像文件存放目录是否存在
-	 */
-	public static boolean routePathExists() {
-		File adFile = new File(sdcardRootPath() + routeSDcardPath());
-
-		if (adFile.exists() && adFile.isDirectory()) {
-			return true;
-		}
-
-		return false;
 	}
 
 	/**
@@ -83,47 +73,28 @@ public class SDUtils {
 	}
 
 	/**
-	 * 创建广告存放路径
-	 * 
-	 * @return 如果已经存在，返回false；如果不存在，则创建所需的目录，并返回true
-	 */
-	public static boolean createRoutePath() {
-		Log.e("SDUtils", "createRoutePath");
-		if (!sdCardExists()) {
-			Log.e("SDUtils", "sdCardExists no");
-			return false;
-		}
-
-		if (routePathExists()) {
-			Log.e("SDUtils", "routePathExists no");
-			return false;
-		}
-		String path = routePath();
-		Log.e("SDUtils", "mkdirs : " + path);
-		File adDir = new File(path);
-		boolean result = adDir.mkdirs();
-		Log.e("SDUtils", "createRoutePath return " + result);
-		return result;
-	}
-
-	/**
 	 * 获取本地广告文件在Android文件系统上的完整存放路径，如/mnt/sdcard/route/
 	 */
-	public static String routePath() {
-		String path = sdcardRootPath() + routeSDcardPath();
-		Log.d("SDUtils", path);
-		return path;
+	public static String routePath(Context c) {
+		File f = c.getExternalFilesDir("router");
+//		ContextCompat.getObbDirs(c);
+//		ContextCompat.getObbDirs(arg0)
+//		File[] fs = ContextCompat.getExternalFilesDirs(c, "route");
+//		if (fs == null || fs.length == 0) {
+//			return null;
+//		}
+//		return fs[0].getPath();
+		return f.getPath();
 	}
 
 	/**
 	 * 
 	 * @return
 	 */
-	public static String makeOutputFileName() {
+	public static String makeOutputFileName(Context c) {
 		Time time = new Time();
 		time.setToNow();
-		return String.format("%s%s%s", SDUtils.routePath(), time.format2445(),
-				".rar");
+		return String.format("%s%s%s", SDUtils.routePath(c), time.format2445(), ".rar");
 	}
 
 }

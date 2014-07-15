@@ -111,7 +111,7 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		initView();
 
 		// sdcard不存在或者可用空间太小
-		if (!UtilMethod.checkSdcardInfo(this) || UtilMethod.getAvailableStore() < 3) {
+		if (!UtilMethod.checkSdcardInfo(this) || UtilMethod.getAvailableStore(this) < 3) {
 			UtilMethod.noSdcardTip(this);
 		} else {
 
@@ -131,7 +131,8 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 
 		availableStoreTimer = new Timer();
 
-		availableStoreTimer.schedule(new AvailableStoreTimerTask(), 10 * 1000, 60 * 1000);
+		availableStoreTimer.schedule(new AvailableStoreTimerTask(getApplicationContext()),
+				10 * 1000, 60 * 1000);
 	}
 
 	/**
@@ -212,16 +213,30 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 			Toast.makeText(this, "不支持模式切换", Toast.LENGTH_SHORT).show();
 			return;
 		}
-		Button btn = (Button) v;
-		String mode = p.getSceneMode();
-		if (Camera.Parameters.SCENE_MODE_NIGHT.equals(mode)) {
-			btn.setText("自动");
-			p.setSceneMode(Camera.Parameters.SCENE_MODE_AUTO);
-		} else {
-			btn.setText("夜间");
-			p.setSceneMode(Camera.Parameters.SCENE_MODE_NIGHT);
-		}
-		sCamera.setParameters(p);
+		final Button btn = (Button) v;
+		List<String> sceneModes = p.getSupportedSceneModes();
+		final String[] modes = new String[sceneModes.size()];
+		sceneModes.toArray(modes);
+		new AlertDialog.Builder(this).setItems(modes, new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+//				if (Camera.Parameters.SCENE_MODE_NIGHT.equals(mode)) {
+//					btn.setText("自动");
+//					p.setSceneMode(Camera.Parameters.SCENE_MODE_AUTO);
+//				} else {
+//					btn.setText("夜间");
+//					p.setSceneMode(Camera.Parameters.SCENE_MODE_NIGHT);
+//				}
+//				btn.setText("自动");
+				p.setSceneMode(modes[which]);
+				sCamera.setParameters(p);
+				Toast.makeText(VideoRecordActivity.this, modes[which], Toast.LENGTH_SHORT).show();
+			}
+
+		}).show();
+
+		
 	}
 
 	@Override
@@ -325,7 +340,7 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 
 		// mWindowMgr.addView(mSurfaceView, layoutForSurfaceView);
 		Log.d(TAG, "startVideoRecord before mk file path");
-		mOutputFileName = SDUtils.makeOutputFileName();
+		mOutputFileName = SDUtils.makeOutputFileName(activity);
 		SurfaceHolder sHolder = VideoApplication.sHolder;
 		if (sHolder == null) {
 			return;
@@ -333,8 +348,6 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		File outFile = new File(mOutputFileName);
 		if (outFile.exists()) {
 			outFile.delete();
-		} else {
-			SDUtils.createRoutePath();
 		}
 		try {
 			c.unlock();
@@ -732,7 +745,7 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 	}
 
 	protected void updateSdcardPercent() {
-		final float result = VideoStore.getAvailableExternalMemorySize();
+		final float result = UtilMethod.getAvailableStore(this);
 		Log.i(TAG, "getAvailableExternalMemorySize " + result);
 
 		// final int result = GetAvilibleStore.getAvailableStore();
@@ -804,13 +817,15 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 
 	public class AvailableStoreTimerTask extends TimerTask {
 
+		private Context mContext;
+
 		@Override
 		public void run() {
 			Log.i(TAG,
 					"AvailableStoreTimerTask .run  current available store = "
-							+ UtilMethod.getAvailableStore());
+							+ UtilMethod.getAvailableStore(mContext));
 
-			boolean isFull = UtilMethod.getAvailableStore() < 5;
+			boolean isFull = UtilMethod.getAvailableStore(mContext) < 5;
 			if (isFull) {
 				stopMediaRecordTask();
 				showMessage("电量/存储空间不足，程序不予运行");
@@ -818,6 +833,11 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 				// VideoRecordActivity.this.finish();
 			}
 		}
+
+		public AvailableStoreTimerTask(Context c) {
+			mContext = c;
+		}
+
 	}
 
 	public class BatteryReceiver extends BroadcastReceiver {

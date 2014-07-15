@@ -1,5 +1,6 @@
 package com.krdavc.video.recorder;
 
+import android.content.Context;
 import android.os.Environment;
 import android.os.StatFs;
 import android.util.Log;
@@ -41,34 +42,34 @@ public class VideoStore
     }
 
 
-    /**
-     * 获取手机外部可用空间大小
-     */
-    static public float getAvailableExternalMemorySize()
-    {
-        if (externalMemoryAvailable()) {
-
-            File path = new File(SDUtils.sdcardRootPath());
-
-//            File path = Environment.getExternalStorageDirectory();
-            StatFs stat = new StatFs(path.getPath());
-//            long blockSize = stat.getBlockSize();
-//            long availableBlocks = stat.getAvailableBlocks();
-
-            // 获取block的SIZE
-            long blocSize = stat.getBlockSize();
-            // 获取BLOCK数量
-            float totalBlocks = stat.getBlockCount();
-            // 可使用的Block的数量
-            float availaBlock = stat.getAvailableBlocks();
-            float result = (float) availaBlock / totalBlocks;
-            result *= 100;
-
-            return result;
-        }
-        else {
-            return ERROR;
-        }
-    }
+//    /**
+//     * 获取手机外部可用空间大小
+//     */
+//    static public float getAvailableExternalMemorySize(Context c)
+//    {
+//        if (externalMemoryAvailable()) {
+//
+//            File path = new File(SDUtils.sdcardRootPath(c));
+//
+////            File path = Environment.getExternalStorageDirectory();
+//            StatFs stat = new StatFs(path.getPath());
+////            long blockSize = stat.getBlockSize();
+////            long availableBlocks = stat.getAvailableBlocks();
+//
+//            // 获取block的SIZE
+//            long blocSize = stat.getBlockSize();
+//            // 获取BLOCK数量
+//            float totalBlocks = stat.getBlockCount();
+//            // 可使用的Block的数量
+//            float availaBlock = stat.getAvailableBlocks();
+//            float result = (float) availaBlock / totalBlocks;
+//            result *= 100;
+//
+//            return result;
+//        }
+//        else {
+//            return ERROR;
+//        }
+//    }
 
 }

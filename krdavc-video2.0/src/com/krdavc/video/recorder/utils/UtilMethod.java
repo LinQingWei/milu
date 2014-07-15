@@ -21,6 +21,7 @@ import android.os.PowerManager.WakeLock;
 import android.os.StatFs;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -38,19 +39,21 @@ public class UtilMethod {
 	/**
 	 * 获取可用空间百分比
 	 */
-	public static int getAvailableStore() {
+	public static int getAvailableStore(Context c) {
 		int result = 0;
 		try {
-			SDUtils.createRoutePath();
 			// 取得sdcard文件路径
-			StatFs statFs = new StatFs(SDUtils.routePath());
-			// 获取BLOCK数量
-			float totalBlocks = statFs.getBlockCount();
-			// 可使用的Block的数量
-			float availaBlock = statFs.getAvailableBlocks();
-			float s = availaBlock / totalBlocks;
-			s *= 100;
-			result = (int) s;
+			String routePath = SDUtils.routePath(c);
+			if (!TextUtils.isEmpty(routePath)) {
+				StatFs statFs = new StatFs(routePath);
+				// 获取BLOCK数量
+				float totalBlocks = statFs.getBlockCount();
+				// 可使用的Block的数量
+				float availaBlock = statFs.getAvailableBlocks();
+				float s = availaBlock / totalBlocks;
+				s *= 100;
+				result = (int) s;
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
