@@ -76,15 +76,18 @@ public class SDUtils {
 	 * 获取本地广告文件在Android文件系统上的完整存放路径，如/mnt/sdcard/route/
 	 */
 	public static String routePath(Context c) {
-		File f = c.getExternalFilesDir("router");
+//		File f = c.getExternalFilesDir("router");
 //		ContextCompat.getObbDirs(c);
 //		ContextCompat.getObbDirs(arg0)
-//		File[] fs = ContextCompat.getExternalFilesDirs(c, "route");
-//		if (fs == null || fs.length == 0) {
-//			return null;
-//		}
+		File[] fs = ContextCompat.getExternalFilesDirs(c, "route");
+		if (fs == null || fs.length == 0) {
+			return null;
+		}
+		if (fs.length > 1) {
+			return fs[1].getPath();
+		}
 //		return fs[0].getPath();
-		return f.getPath();
+		return fs[0].getPath();
 	}
 
 	/**
