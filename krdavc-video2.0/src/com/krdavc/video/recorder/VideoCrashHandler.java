@@ -1,8 +1,10 @@
 package com.krdavc.video.recorder;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FilenameFilter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.Writer;
@@ -24,6 +26,8 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Build;
 import android.os.Environment;
 import android.os.Looper;
+import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Toast;
 
 /**
@@ -32,8 +36,8 @@ import android.widget.Toast;
  */
 public class VideoCrashHandler implements UncaughtExceptionHandler {
 
-	private static final File DIR = new File(Environment.getExternalStorageDirectory()
-			+ "/router/log/");
+	private static final File DIR = new File(
+			Environment.getExternalStorageDirectory() + "/router/log/");
 
 	private static final String VERSION_NAME = "versionName";
 
@@ -50,7 +54,8 @@ public class VideoCrashHandler implements UncaughtExceptionHandler {
 
 	private static final int FILE_NUM = 10;
 
-	private static SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd_HHmmss");
+	private static SimpleDateFormat format = new SimpleDateFormat(
+			"yyyyMMdd_HHmmss");
 
 	/**
 	 * CrashHandler实例
@@ -157,7 +162,8 @@ public class VideoCrashHandler implements UncaughtExceptionHandler {
 				@Override
 				public void run() {
 					Looper.prepare();
-					Toast.makeText(mContext, "程序发生异常", Toast.LENGTH_LONG).show();
+					Toast.makeText(mContext, "程序发生异常", Toast.LENGTH_LONG)
+							.show();
 					Looper.loop();
 				}
 			};
@@ -254,7 +260,8 @@ public class VideoCrashHandler implements UncaughtExceptionHandler {
 
 		try {
 			// long timestamp = System.currentTimeMillis();
-			String fileName = "crash_" + format.format(new Date()) + CRASH_REPORTER_EXTENSION;
+			String fileName = "crash_" + format.format(new Date())
+					+ CRASH_REPORTER_EXTENSION;
 
 			// FileOutputStream trace = mContext.openFileOutput(fileName,
 			// Context.MODE_PRIVATE);
@@ -264,7 +271,8 @@ public class VideoCrashHandler implements UncaughtExceptionHandler {
 				}
 			}
 
-			FileOutputStream trace = new FileOutputStream(new File(DIR, fileName));
+			FileOutputStream trace = new FileOutputStream(new File(DIR,
+					fileName));
 
 			mDeviceCrashInfo.store(trace, "");
 			trace.flush();
@@ -285,10 +293,11 @@ public class VideoCrashHandler implements UncaughtExceptionHandler {
 	private void collectCrashDeviceInfo(Context ctx) {
 		try {
 			PackageManager pm = ctx.getPackageManager();
-			PackageInfo pi = pm.getPackageInfo(ctx.getPackageName(), PackageManager.GET_ACTIVITIES);
+			PackageInfo pi = pm.getPackageInfo(ctx.getPackageName(),
+					PackageManager.GET_ACTIVITIES);
 			if (pi != null) {
-				mDeviceCrashInfo.put(VERSION_NAME, pi.versionName == null ? "not set"
-						: pi.versionName);
+				mDeviceCrashInfo.put(VERSION_NAME,
+						pi.versionName == null ? "not set" : pi.versionName);
 				mDeviceCrashInfo.put(VERSION_CODE, pi.versionCode + "");
 			}
 		} catch (NameNotFoundException e) {
@@ -349,6 +358,38 @@ public class VideoCrashHandler implements UncaughtExceptionHandler {
 				return 0;
 			} else {
 				return -1;
+			}
+		}
+	}
+
+	public static void save2Log(String log, String fileName) {
+		Log.i("TAG", log);
+		if (TextUtils.isEmpty(fileName)) {
+			fileName = "log.txt";
+		}
+		if (!DIR.exists()) {
+			if (!DIR.mkdirs()) {
+				return;
+			}
+		}
+
+		FileOutputStream fos = null;
+		try {
+			fos = new FileOutputStream(new File(DIR, fileName));
+			fos.write(log.getBytes());
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (fos != null) {
+				try {
+					fos.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 	}

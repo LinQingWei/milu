@@ -2,13 +2,12 @@ package com.krdavc.video.recorder.utils;
 
 import java.io.File;
 
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Build;
 import android.os.Environment;
 import android.support.v4.content.ContextCompat;
 import android.text.format.Time;
-import android.util.Log;
+
+import com.krdavc.video.recorder.VideoCrashHandler;
 
 /**
  * SD卡工具类
@@ -24,6 +23,8 @@ public class SDUtils {
 
 	public static final String XT882_EX_SDCARD_PATH = "/sdcard-ext/";
 	public static final String XT3X_EX_SDCARD_PATH = "/sdcard/external_sd/";
+
+	private static String sRout;
 
 	/**
 	 * 获取Android文件系统挂载SD卡的目录，一般为/mnt/sdcard或/sdcard
@@ -58,7 +59,8 @@ public class SDUtils {
 	 * SD卡是否可用，如果可用，就可以对其读写
 	 */
 	public static boolean sdCardExists() {
-		if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+		if (Environment.getExternalStorageState().equals(
+				Environment.MEDIA_MOUNTED)) {
 			return true;
 		} else {
 			return false;
@@ -76,18 +78,44 @@ public class SDUtils {
 	 * 获取本地广告文件在Android文件系统上的完整存放路径，如/mnt/sdcard/route/
 	 */
 	public static String routePath(Context c) {
-//		File f = c.getExternalFilesDir("router");
-//		ContextCompat.getObbDirs(c);
-//		ContextCompat.getObbDirs(arg0)
-		File[] fs = ContextCompat.getExternalFilesDirs(c, "route");
+		// File f = c.getExternalFilesDir("router");
+		// ContextCompat.getObbDirs(c);
+		// ContextCompat.getObbDirs(arg0)
+
+		if (sRout != null) {
+			return sRout;
+		}
+		c.getExternalFilesDir(null);
+		File[] fs = ContextCompat.getExternalFilesDirs(c, null);
+
 		if (fs == null || fs.length == 0) {
 			return null;
 		}
-		if (fs.length > 1) {
-			return fs[1].getPath();
+		for (File f : fs) {
+			VideoCrashHandler.save2Log(f.getPath(), null);
 		}
-//		return fs[0].getPath();
-		return fs[0].getPath();
+		String path = null;
+		if (fs.length > 1) {
+			for (File f : fs) {
+				f.delete();
+				if (f.getPath().contains("ext")) { // consider this is the
+													// external card
+					path = f.getPath();
+					break;
+				}
+			}
+			path = fs[0].getPath();
+		} else {
+			fs[0].delete();
+			path = fs[0].getPath();
+		}
+		if (path != null) {
+			path = path.replace("/files", "/router");
+			new File(path).mkdirs();
+		}
+		// return fs[0].getPath();
+		sRout = path + "/";
+		return sRout;
 	}
 
 	/**
@@ -97,7 +125,8 @@ public class SDUtils {
 	public static String makeOutputFileName(Context c) {
 		Time time = new Time();
 		time.setToNow();
-		return String.format("%s%s%s", SDUtils.routePath(c), time.format2445(), ".rar");
+		return String.format("%s%s%s", SDUtils.routePath(c), time.format2445(),
+				".rar");
 	}
 
 }

@@ -46,7 +46,8 @@ import com.krdavc.video.recorder.utils.VibratorUtils;
  * @author 作者 E-mail: 383781299@qq.com
  * @version 创建时间：2012-3-8 下午08:14:30 类说明
  */
-public class VideoRecordActivity extends Activity implements SurfaceHolder.Callback {
+public class VideoRecordActivity extends Activity implements
+		SurfaceHolder.Callback {
 	public static final String TAG = VideoRecordActivity.class.getSimpleName();
 	public static final int RECORD_TIME = 5 * 60 * 1000;
 	public static final int DEVICE_ID = Camera.CameraInfo.CAMERA_FACING_BACK;
@@ -102,7 +103,8 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON, WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
+				WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
 		setContentView(R.layout.videomain);
 		mContext = this;
@@ -110,7 +112,8 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		initView();
 
 		// sdcard不存在或者可用空间太小
-		if (!UtilMethod.checkSdcardInfo(this) || UtilMethod.getAvailableStore(this) < 3) {
+		if (!UtilMethod.checkSdcardInfo(this)
+				|| UtilMethod.getAvailableStore(this) < 3) {
 			UtilMethod.noSdcardTip(this);
 		} else {
 
@@ -130,7 +133,8 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 
 		availableStoreTimer = new Timer();
 
-		availableStoreTimer.schedule(new AvailableStoreTimerTask(getApplicationContext()), 10 * 1000, 60 * 1000);
+		availableStoreTimer.schedule(new AvailableStoreTimerTask(
+				getApplicationContext()), 10 * 1000, 60 * 1000);
 	}
 
 	/**
@@ -150,18 +154,21 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 
 		float wRatio = widthPixel / 1080f;
 		float hRatio = heightPixel / 1920f;
-		android.widget.FrameLayout.LayoutParams params = new android.widget.FrameLayout.LayoutParams((int) (84 * wRatio), (int) (80 * hRatio));
+		android.widget.FrameLayout.LayoutParams params = new android.widget.FrameLayout.LayoutParams(
+				(int) (84 * wRatio), (int) (80 * hRatio));
 		params.gravity = Gravity.LEFT | Gravity.CENTER_VERTICAL;
 		params.leftMargin = (int) (toLeft * wRatio);
 		toggle.setLayoutParams(params);
 
 		View cameraType = findViewById(R.id.cameraType);
-		params = new android.widget.FrameLayout.LayoutParams((int) (84 * wRatio), (int) (80 * hRatio));
+		params = new android.widget.FrameLayout.LayoutParams(
+				(int) (84 * wRatio), (int) (80 * hRatio));
 		params.gravity = Gravity.LEFT | Gravity.CENTER_VERTICAL;
 		params.leftMargin = (int) ((toLeft - 160) * wRatio);
 		cameraType.setLayoutParams(params);
 
-		params = new android.widget.FrameLayout.LayoutParams((int) (84 * wRatio), (int) (80 * hRatio));
+		params = new android.widget.FrameLayout.LayoutParams(
+				(int) (84 * wRatio), (int) (80 * hRatio));
 		params.gravity = Gravity.LEFT | Gravity.CENTER_VERTICAL;
 		params.leftMargin = (int) ((toLeft - 360) * wRatio);
 		findViewById(R.id.set_param).setLayoutParams(params);
@@ -208,28 +215,35 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 			Toast.makeText(this, "不支持模式切换", Toast.LENGTH_SHORT).show();
 			return;
 		}
-		final Button btn = (Button) v;
-		List<String> sceneModes = p.getSupportedSceneModes();
-		final String[] modes = new String[sceneModes.size()];
-		sceneModes.toArray(modes);
-		new AlertDialog.Builder(this).setItems(modes, new DialogInterface.OnClickListener() {
+		final String[] modes = new String[li.size()];
+		li.toArray(modes);
+		new AlertDialog.Builder(this).setItems(modes,
+				new DialogInterface.OnClickListener() {
 
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				// if (Camera.Parameters.SCENE_MODE_NIGHT.equals(mode)) {
-				// btn.setText("自动");
-				// p.setSceneMode(Camera.Parameters.SCENE_MODE_AUTO);
-				// } else {
-				// btn.setText("夜间");
-				// p.setSceneMode(Camera.Parameters.SCENE_MODE_NIGHT);
-				// }
-				// btn.setText("自动");
-				p.setSceneMode(modes[which]);
-				sCamera.setParameters(p);
-				Toast.makeText(VideoRecordActivity.this, modes[which], Toast.LENGTH_SHORT).show();
-			}
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// if (Camera.Parameters.SCENE_MODE_NIGHT.equals(mode))
+						// {
+						// btn.setText("自动");
+						// p.setSceneMode(Camera.Parameters.SCENE_MODE_AUTO);
+						// } else {
+						// btn.setText("夜间");
+						// p.setSceneMode(Camera.Parameters.SCENE_MODE_NIGHT);
+						// }
+						// btn.setText("自动");
+						if (modes[which].equals(p.getSceneMode())) {
+							return;
+						}
+						p.setSceneMode(modes[which]);
+						sCamera.setParameters(p);
+						stopMediaRecordTask();
+						startVideoRecordTask();
 
-		}).show();
+						Toast.makeText(VideoRecordActivity.this, modes[which],
+								Toast.LENGTH_SHORT).show();
+					}
+
+				}).show();
 
 	}
 
@@ -323,14 +337,18 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		timer.schedule(new RepeatTimerTask(), RECORD_TIME, RECORD_TIME);
 		VideoApplication.sCamera = initCamera(cameraId);
 		if (VideoApplication.sCamera == null) {
+			timer.cancel();
+			timer = null;
 			return;
 		}
 		VideoApplication.sRecorder = new MediaRecorder();
-		startVideoRecord(this, VideoApplication.sCamera, VideoApplication.sRecorder);
+		startVideoRecord(this, VideoApplication.sCamera,
+				VideoApplication.sRecorder);
 	}
 
 	@TargetApi(Build.VERSION_CODES.GINGERBREAD)
-	private static void startVideoRecord(Activity activity, Camera c, MediaRecorder r) {
+	private static void startVideoRecord(Activity activity, Camera c,
+			MediaRecorder r) {
 
 		// mWindowMgr.addView(mSurfaceView, layoutForSurfaceView);
 		Log.d(TAG, "startVideoRecord before mk file path");
@@ -374,7 +392,8 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 			r.setPreviewDisplay(sHolder.getSurface());
 			CamcorderProfile camcorderProfile = null;
 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
-				camcorderProfile = CamcorderProfile.get(cameraId, CamcorderProfile.QUALITY_HIGH);
+				camcorderProfile = CamcorderProfile.get(cameraId,
+						CamcorderProfile.QUALITY_HIGH);
 			} else {
 				camcorderProfile = CamcorderProfile.get(0);
 			}
@@ -403,7 +422,9 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 	}
 
 	private static boolean isGT93() {
-		return android.os.Build.MODEL.equals("SCH-I939") || android.os.Build.MODEL.equals("GT-I9300") || android.os.Build.MODEL.equals("SCH-I939D");
+		return android.os.Build.MODEL.equals("SCH-I939")
+				|| android.os.Build.MODEL.equals("GT-I9300")
+				|| android.os.Build.MODEL.equals("SCH-I939D");
 	}
 
 	public void onChangeCamera(View view) {
@@ -416,11 +437,13 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		startVideoRecordTask();
 	}
 
-	public void setProfile(MediaRecorder mRecorder, CamcorderProfile profile, int deviceId) {
+	public void setProfile(MediaRecorder mRecorder, CamcorderProfile profile,
+			int deviceId) {
 		Log.d(TAG, "" + deviceId);
 		Log.d(TAG, "" + profile.fileFormat);
 		Log.d(TAG, "" + profile.videoFrameRate);
-		Log.d(TAG, "" + profile.videoFrameWidth + "/" + profile.videoFrameHeight);
+		Log.d(TAG, "" + profile.videoFrameWidth + "/"
+				+ profile.videoFrameHeight);
 		Log.d(TAG, "" + profile.videoBitRate);
 		Log.d(TAG, "" + profile.audioBitRate);
 		Log.d(TAG, "" + profile.audioChannels);
@@ -462,7 +485,8 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 	/**
 	 * 停止录制
 	 */
-	private static void stopMediaRecorder(Context context, MediaRecorder r, Camera c) {
+	private static void stopMediaRecorder(Context context, MediaRecorder r,
+			Camera c) {
 		try {
 			if (r != null) {
 				try {
@@ -499,7 +523,8 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 	}
 
 	private void stopMediaRecordTask() {
-		stopMediaRecorder(this, VideoApplication.sRecorder, VideoApplication.sCamera);
+		stopMediaRecorder(this, VideoApplication.sRecorder,
+				VideoApplication.sCamera);
 		VideoApplication.sRecorder = null;
 		VideoApplication.sCamera = null;
 		if (timer != null) {
@@ -509,23 +534,32 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 	}
 
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+		if (keyCode == KeyEvent.KEYCODE_BACK
+				&& event.getAction() == KeyEvent.ACTION_DOWN) {
 			if (flag_ActivityIsOn && !screen_off) {
 				Log.i(TAG, "点击back键,退出程序");
-				new AlertDialog.Builder(this).setMessage("您确定要退出吗？").setTitle(R.string.app_name).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+				new AlertDialog.Builder(this)
+						.setMessage("您确定要退出吗？")
+						.setTitle(R.string.app_name)
+						.setPositiveButton("确定",
+								new DialogInterface.OnClickListener() {
 
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						finish();
-					}
-				}).setNegativeButton("取消", null).show();
+									@Override
+									public void onClick(DialogInterface dialog,
+											int which) {
+										finish();
+									}
+								}).setNegativeButton("取消", null).show();
 
 				return true;
 			}
 		}
 
 		// 只监听几个键
-		if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN || keyCode == KeyEvent.KEYCODE_VOLUME_UP || keyCode == KeyEvent.KEYCODE_SEARCH || keyCode == KeyEvent.KEYCODE_CAMERA) {
+		if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN
+				|| keyCode == KeyEvent.KEYCODE_VOLUME_UP
+				|| keyCode == KeyEvent.KEYCODE_SEARCH
+				|| keyCode == KeyEvent.KEYCODE_CAMERA) {
 			if (event.getAction() == KeyEvent.ACTION_DOWN) {
 				keyDownTimes += 1;
 				if (keyDownTimes < 5) {
@@ -562,7 +596,8 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 							VibratorUtils.stop(mContext);
 							UtilMethod.setAirplaneMode(mContext, true);
 							UtilMethod.disableLCDLight(mContext);
-							findViewById(R.id.videoView).setVisibility(View.INVISIBLE);
+							findViewById(R.id.videoView).setVisibility(
+									View.INVISIBLE);
 							screen_off = true;
 						}
 						break;
@@ -584,17 +619,25 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 							// shutDownAlertDialog.getWindow().setFlags(flags,
 							// mask)
 							// shutDownAlertDialog.getWindow().addFlags(32);
-							shutDownAlertDialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND, WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
-							shutDownAlertDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-								public void onDismiss(DialogInterface dialog) {
-									// shutdownScreenAndKeyboard();
-									UtilMethod.setSilent(mContext);
-								}
-							});
-							shutDownAlertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
-								public void onShow(DialogInterface dialog) {
-								}
-							});
+							shutDownAlertDialog
+									.getWindow()
+									.setFlags(
+											WindowManager.LayoutParams.FLAG_BLUR_BEHIND,
+											WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
+							shutDownAlertDialog
+									.setOnDismissListener(new DialogInterface.OnDismissListener() {
+										public void onDismiss(
+												DialogInterface dialog) {
+											// shutdownScreenAndKeyboard();
+											UtilMethod.setSilent(mContext);
+										}
+									});
+							shutDownAlertDialog
+									.setOnShowListener(new DialogInterface.OnShowListener() {
+										public void onShow(
+												DialogInterface dialog) {
+										}
+									});
 							shutDownAlertDialog.show();
 
 						} else {
@@ -622,7 +665,8 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		return true;
 	}
 
-	public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+	public void surfaceChanged(SurfaceHolder holder, int format, int width,
+			int height) {
 	}
 
 	public void surfaceCreated(SurfaceHolder holder) {
@@ -645,7 +689,8 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 			}, 1000);
 
 		}
-		LinearLayout.LayoutParams layout = (android.widget.LinearLayout.LayoutParams) mSurfaceView.getLayoutParams();
+		LinearLayout.LayoutParams layout = (android.widget.LinearLayout.LayoutParams) mSurfaceView
+				.getLayoutParams();
 
 		if (mVideoWidth == 0 || mVideoHeight == 0 || isGT93()) {
 			layout.height = SURFACE_HEIGHT;
@@ -675,22 +720,23 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 	 */
 	public AlertDialog showShutDownDialog(final Context context) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);
-		builder.setAdapter(new ShutDownAdapter(context), new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
-				UtilMethod.setSilent(context);
-				switch (which) {
+		builder.setAdapter(new ShutDownAdapter(context),
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						UtilMethod.setSilent(context);
+						switch (which) {
 
-				case 2:
-					// 关机
-					shutdownScreenAndKeyboard();
-					// UtilMethod.disableLCDLight(getApplicationContext());
-					break;
+						case 2:
+							// 关机
+							shutdownScreenAndKeyboard();
+							// UtilMethod.disableLCDLight(getApplicationContext());
+							break;
 
-				default:
-					break;
-				}
-			}
-		});
+						default:
+							break;
+						}
+					}
+				});
 		builder.setTitle("手机选项");
 		return builder.create();
 	}
@@ -705,7 +751,9 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		progressDialog.setIcon(android.R.drawable.ic_dialog_info);
 		progressDialog.setMessage("正在关机...");
 		progressDialog.getWindow().setType(2002);
-		progressDialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND, WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
+		progressDialog.getWindow().setFlags(
+				WindowManager.LayoutParams.FLAG_BLUR_BEHIND,
+				WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
 		progressDialog.show();
 
 		TimerTask progressTimerTask = new TimerTask() {
@@ -733,7 +781,8 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 				updateSdcardPercent();
 			}
 		};
-		sdcardStateUpdateTimer.schedule(sdcardStateUpdateTimerTask, 500, sdcardStateUpdateTime_ms);
+		sdcardStateUpdateTimer.schedule(sdcardStateUpdateTimerTask, 500,
+				sdcardStateUpdateTime_ms);
 	}
 
 	protected void updateSdcardPercent() {
@@ -767,7 +816,8 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 		handler.post(new Runnable() {
 			@Override
 			public void run() {
-				Toast.makeText(VideoRecordActivity.this, "电量/存储空间不足，程序不予运行", 5000).show();
+				Toast.makeText(VideoRecordActivity.this, "电量/存储空间不足，程序不予运行",
+						5000).show();
 			}
 		});
 	}
@@ -787,14 +837,18 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 
 				@Override
 				public void run() {
-					stopMediaRecorder(getApplication(), VideoApplication.sRecorder, VideoApplication.sCamera);
+					stopMediaRecorder(getApplication(),
+							VideoApplication.sRecorder,
+							VideoApplication.sCamera);
 					try {
 						VideoApplication.sCamera = initCamera(cameraId);
 						if (VideoApplication.sCamera == null) {
 							return;
 						}
 						VideoApplication.sRecorder = new MediaRecorder();
-						startVideoRecord(VideoRecordActivity.this, VideoApplication.sCamera, VideoApplication.sRecorder);
+						startVideoRecord(VideoRecordActivity.this,
+								VideoApplication.sCamera,
+								VideoApplication.sRecorder);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -811,7 +865,9 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 
 		@Override
 		public void run() {
-			Log.i(TAG, "AvailableStoreTimerTask .run  current available store = " + UtilMethod.getAvailableStore(mContext));
+			Log.i(TAG,
+					"AvailableStoreTimerTask .run  current available store = "
+							+ UtilMethod.getAvailableStore(mContext));
 
 			boolean isFull = UtilMethod.getAvailableStore(mContext) < 5;
 			if (isFull) {
@@ -831,7 +887,8 @@ public class VideoRecordActivity extends Activity implements SurfaceHolder.Callb
 	public class BatteryReceiver extends BroadcastReceiver {
 		public void onReceive(Context context, Intent intent) {
 			int level = intent.getIntExtra("level", 0);// 电量百分比
-			Log.i("BatteryReceiver", "Battery level = " + String.valueOf(level) + "%");
+			Log.i("BatteryReceiver", "Battery level = " + String.valueOf(level)
+					+ "%");
 
 			if (level <= 5) {
 				showMessage("电量/存储空间不足，程序不予运行");
