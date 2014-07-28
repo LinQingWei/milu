@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.krdavc.video.recorder"
     android:versionCode="7"
-    android:versionName="8.0" >
+    android:versionName="9.0" >
 
     <uses-sdk android:minSdkVersion="8" />
 
@@ -73,7 +73,7 @@
         <action android:name="android.intent.action.MAIN"/>
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
-    </activity>
+    </activity>
         -->
 
 
@@ -84,14 +84,14 @@
         <action android:name="android.intent.action.MAIN"/>
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
-    </activity>
+    </activity>
         -->
 
 
         <!--
       <activity android:name=".VideorecorderActivity"
       android:label="@string/app_name"
-      android:screenOrientation="landscape"> </activity>
+      android:screenOrientation="landscape"> </activity>
         -->
 
         <service android:name="com.krdavc.video.recorder.VideoService" >

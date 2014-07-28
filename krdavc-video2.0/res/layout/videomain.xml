@@ -38,6 +38,7 @@
                 android:onClick="onSetParam"
                 android:text="自动"
                 android:textColor="#ffffff"
+                android:visibility="gone"
                 android:textSize="23sp" >
             </Button>
         </FrameLayout>

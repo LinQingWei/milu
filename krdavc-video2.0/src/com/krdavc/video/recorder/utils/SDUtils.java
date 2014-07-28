@@ -3,8 +3,8 @@ package com.krdavc.video.recorder.utils;
 import java.io.File;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Environment;
-import android.support.v4.content.ContextCompat;
 import android.text.format.Time;
 
 import com.krdavc.video.recorder.VideoCrashHandler;
@@ -59,8 +59,7 @@ public class SDUtils {
 	 * SD卡是否可用，如果可用，就可以对其读写
 	 */
 	public static boolean sdCardExists() {
-		if (Environment.getExternalStorageState().equals(
-				Environment.MEDIA_MOUNTED)) {
+		if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
 			return true;
 		} else {
 			return false;
@@ -74,6 +73,22 @@ public class SDUtils {
 		return ROUTE_SDCARD_PATH;
 	}
 
+	private static final String DIR_ANDROID = "Android";
+	private static final String DIR_DATA = "data";
+	private static final String DIR_FILES = "files";
+
+	private static File buildPath(File base, String... segments) {
+		File cur = base;
+		for (String segment : segments) {
+			if (cur == null) {
+				cur = new File(segment);
+			} else if (segment != null) {
+				cur = new File(cur, segment);
+			}
+		}
+		return cur;
+	}
+
 	/**
 	 * 获取本地广告文件在Android文件系统上的完整存放路径，如/mnt/sdcard/route/
 	 */
@@ -85,8 +100,27 @@ public class SDUtils {
 		if (sRout != null) {
 			return sRout;
 		}
-		c.getExternalFilesDir(null);
-		File[] fs = ContextCompat.getExternalFilesDirs(c, null);
+		final int version = Build.VERSION.SDK_INT;
+		File[] fs = null;
+		if (version >= 19) {
+			fs = c.getExternalFilesDirs(null);
+		} else {
+			StorageOptions.determineStorageOptions();
+			String[] paths = StorageOptions.paths;
+			String thePath = null;
+			for (String path : paths) {
+				if (path.contains("ex")) {
+					thePath = path;
+					break;
+				}
+			}
+			if (thePath == null && paths != null && paths.length > 0) {
+				thePath = paths[0];
+			}
+			if (thePath != null) {
+				fs = new File[] { buildPath(null, thePath, DIR_ANDROID, DIR_DATA, c.getPackageName(), DIR_FILES) };
+			}
+		}
 
 		if (fs == null || fs.length == 0) {
 			return null;
@@ -98,8 +132,7 @@ public class SDUtils {
 		if (fs.length > 1) {
 			for (File f : fs) {
 				f.delete();
-				if (f.getPath().contains("ext")) { // consider this is the
-													// external card
+				if (f.getPath().contains("ex")) { // samsung consider this is the external card
 					path = f.getPath();
 					break;
 				}
@@ -125,8 +158,7 @@ public class SDUtils {
 	public static String makeOutputFileName(Context c) {
 		Time time = new Time();
 		time.setToNow();
-		return String.format("%s%s%s", SDUtils.routePath(c), time.format2445(),
-				".rar");
+		return String.format("%s%s%s", SDUtils.routePath(c), time.format2445(), ".rar");
 	}
 
 }
