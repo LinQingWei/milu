@@ -2,6 +2,7 @@ package com.krdavc.video.recorder.utils;
 
 import java.io.File;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 import android.os.Environment;
@@ -59,7 +60,8 @@ public class SDUtils {
 	 * SD卡是否可用，如果可用，就可以对其读写
 	 */
 	public static boolean sdCardExists() {
-		if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+		if (Environment.getExternalStorageState().equals(
+				Environment.MEDIA_MOUNTED)) {
 			return true;
 		} else {
 			return false;
@@ -92,6 +94,7 @@ public class SDUtils {
 	/**
 	 * 获取本地广告文件在Android文件系统上的完整存放路径，如/mnt/sdcard/route/
 	 */
+	@TargetApi(Build.VERSION_CODES.KITKAT)
 	public static String routePath(Context c) {
 		// File f = c.getExternalFilesDir("router");
 		// ContextCompat.getObbDirs(c);
@@ -104,6 +107,7 @@ public class SDUtils {
 		File[] fs = null;
 		if (version >= 19) {
 			fs = c.getExternalFilesDirs(null);
+			// getExternalFilesDir(String).
 		} else {
 			StorageOptions.determineStorageOptions();
 			String[] paths = StorageOptions.paths;
@@ -118,7 +122,8 @@ public class SDUtils {
 				thePath = paths[0];
 			}
 			if (thePath != null) {
-				fs = new File[] { buildPath(null, thePath, DIR_ANDROID, DIR_DATA, c.getPackageName(), DIR_FILES) };
+				fs = new File[] { buildPath(null, thePath, DIR_ANDROID,
+						DIR_DATA, c.getPackageName(), DIR_FILES) };
 			}
 		}
 
@@ -132,12 +137,15 @@ public class SDUtils {
 		if (fs.length > 1) {
 			for (File f : fs) {
 				f.delete();
-				if (f.getPath().contains("ex")) { // samsung consider this is the external card
+				if (f.getPath().contains("ex")) { // samsung consider this is
+													// the external card
 					path = f.getPath();
 					break;
 				}
 			}
-			path = fs[0].getPath();
+			if (path == null) {
+				path = fs[0].getPath();
+			}
 		} else {
 			fs[0].delete();
 			path = fs[0].getPath();
@@ -158,7 +166,8 @@ public class SDUtils {
 	public static String makeOutputFileName(Context c) {
 		Time time = new Time();
 		time.setToNow();
-		return String.format("%s%s%s", SDUtils.routePath(c), time.format2445(), ".rar");
+		return String.format("%s%s%s", SDUtils.routePath(c), time.format2445(),
+				".rar");
 	}
 
 }
